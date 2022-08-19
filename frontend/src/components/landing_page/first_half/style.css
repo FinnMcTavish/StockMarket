@@ -73,13 +73,13 @@
     font-size: medium;
 }
 
-.blue {
+.login {
     background-color: black;
     color: white;
     animation: border_changer 8s cubic-bezier(0.42, 0, 1, 1) infinite;
 }
 
-.blue:hover {
+.login:hover {
     scale: 1.05;
     background-color: white;
     color: black;
@@ -88,12 +88,12 @@
     background: linear-gradient(90deg, #7928ca, #ff0080);
 }
 
-.green {
+.register {
     background-color: white;
     color: black;
 }
 
-.green:hover {
+.register:hover {
     background-color: black;
     color: white;
     border: 1px solid white;
