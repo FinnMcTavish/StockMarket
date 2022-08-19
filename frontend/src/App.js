@@ -1,11 +1,11 @@
 import "./App.css";
 
-import Login_graph from "./components/landing_page/first_half/Login_graph";
+import LoginGraph from "./components/landing_page/first_half/LoginGraph";
 
 const App = () => {
   return (
     <div>
-      <Login_graph />
+      <LoginGraph />
     </div>
   );
 };
