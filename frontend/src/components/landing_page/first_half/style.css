@@ -57,6 +57,17 @@
     margin-left: 30px;
 }
 
+.image-fix {
+    margin: 70px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.image-fix img {
+    padding: 70px 50px;
+}
+
 .small-flex {
     display: flex;
     flex-direction: row;

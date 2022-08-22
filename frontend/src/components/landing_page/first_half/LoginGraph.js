@@ -2,9 +2,8 @@ import "./style.css";
 
 import React from "react";
 
-import LineChart from "./LineChart";
 
-import HowtoPlay from "./HowtoPlay";
+import StonksMan from "../../../assets/stonks man.png";
 
 class LoginGraph extends React.Component {
   render() {
@@ -20,8 +19,11 @@ class LoginGraph extends React.Component {
             <button className="register">Register</button>
           </div>
         </nav>
-        {/* <HowtoPlay />
-        <LineChart /> */}
+        <div className=" image-fix">
+          <img src={StonksMan} alt="Stonks Man" height="350px" width="250px" />
+          <img src={StonksMan} alt="Stonks Man" height="350px" width="250px" />
+        </div>
+      
       </div>
     );
   }
