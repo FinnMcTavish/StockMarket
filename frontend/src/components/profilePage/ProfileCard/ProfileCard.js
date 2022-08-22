@@ -1,8 +1,8 @@
 import React from "react";
 import "./ProfileCard.css";
-import pic from "./images/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png";
-import Square from "./Square";
-import point from "./images/point.png";
+import pic from "../../../assets/blue-transparent.png";
+import Square from "../Square/Square";
+import point from "../../../assets/point.png";
 function ProfileCard() {
   return (
     <section className="profcard">

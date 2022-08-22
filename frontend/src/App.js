@@ -6,7 +6,7 @@ import HowtoPlay from "./components/landing_page/div2/HowtoPlay";
 
 import LineChart from "./components/landing_page/div3/LineChart";
 
-import MyProfile from "./components/landing_page/rithvik_files/MyProfile";
+import MyProfile from "./components/profilePage/MyProfile/MyProfile";
 
 const App = () => {
   return (
