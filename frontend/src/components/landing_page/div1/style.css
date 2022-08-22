@@ -66,6 +66,8 @@
 
 .image-fix img {
     padding: 70px 50px;
+    width: 250px;
+    height: 350px;
 }
 
 .small-flex {

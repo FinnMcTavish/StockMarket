@@ -2,7 +2,6 @@ import "./style.css";
 
 import React from "react";
 
-
 import StonksMan from "../../../assets/stonks man.png";
 
 class LoginGraph extends React.Component {
@@ -20,10 +19,9 @@ class LoginGraph extends React.Component {
           </div>
         </nav>
         <div className=" image-fix">
-          <img src={StonksMan} alt="Stonks Man" height="350px" width="250px" />
-          <img src={StonksMan} alt="Stonks Man" height="350px" width="250px" />
+          <img src={StonksMan} alt="Stonks Man" />
+          <img src={StonksMan} alt="Stonks Man" />
         </div>
-      
       </div>
     );
   }
