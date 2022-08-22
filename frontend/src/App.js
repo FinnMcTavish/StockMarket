@@ -1,21 +1,18 @@
 import "./App.css";
 
-import LoginGraph from "./components/landing_page/div1/LoginGraph";
+import HomePage from "./pages/HomePage";
+import Profile from "./pages/Profile";
 
-import HowtoPlay from "./components/landing_page/div2/HowtoPlay";
-
-import LineChart from "./components/landing_page/div3/LineChart";
-
-import MyProfile from "./components/profilePage/MyProfile/MyProfile";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <div>
-      <LoginGraph />
-      <HowtoPlay />
-      <LineChart />
-      <MyProfile />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
