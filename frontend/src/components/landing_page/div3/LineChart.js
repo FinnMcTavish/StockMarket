@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./style.css";
+
 import { Line } from "react-chartjs-2";
 
 class LineChart extends React.Component {
@@ -97,27 +99,29 @@ class LineChart extends React.Component {
       },
     };
     return (
-      <Line
-        datasetIdKey="id"
-        options={options}
-        data={{
-          labels: this.state.xValue,
-          datasets: [
-            {
-              id: 1,
-              label: this.state.selected,
-              data: this.state.yValue,
-              fill: true,
-              backgroundColor: "#b84bc033",
-              borderColor: "#7928ca",
+      <div className="container">
+        <Line
+          datasetIdKey="id"
+          options={options}
+          data={{
+            labels: this.state.xValue,
+            datasets: [
+              {
+                id: 1,
+                label: this.state.selected,
+                data: this.state.yValue,
+                fill: true,
+                backgroundColor: "#b84bc033",
+                borderColor: "#7928ca",
 
-              pointStyle: "star",
-              pointBorderColor: "#8004fc",
-              pointBackgroundColor: "white",
-            },
-          ],
-        }}
-      />
+                pointStyle: "star",
+                pointBorderColor: "#8004fc",
+                pointBackgroundColor: "white",
+              },
+            ],
+          }}
+        />
+      </div>
     );
   }
 }
