@@ -66,15 +66,15 @@ class LineChart extends React.Component {
       scales: {
         xAxes: [
           {
-            display: true,
+            display: false,
             scaleLabel: {
               display: true,
               labelString: "Date - >",
-              fontColor: "#b41f1f",
+              fontColor: "white",
               fontSize: 18,
             },
             ticks: {
-              fontColor: "red",
+              fontColor: "white",
               fontSize: 8,
             },
           },
@@ -85,11 +85,11 @@ class LineChart extends React.Component {
             scaleLabel: {
               display: true,
               labelString: "Cost - >",
-              fontColor: "#2db11c",
+              fontColor: "white",
               fontSize: 18,
             },
             ticks: {
-              fontColor: "green",
+              fontColor: "white",
               fontSize: 14,
             },
           },
@@ -108,11 +108,11 @@ class LineChart extends React.Component {
               label: this.state.selected,
               data: this.state.yValue,
               fill: true,
-              backgroundColor: "rgba(75,192,192,0.2)",
-              borderColor: "#0feeee",
+              backgroundColor: "#b84bc033",
+              borderColor: "#7928ca",
 
               pointStyle: "star",
-              pointBorderColor: "#0f9cee",
+              pointBorderColor: "#8004fc",
               pointBackgroundColor: "white",
             },
           ],

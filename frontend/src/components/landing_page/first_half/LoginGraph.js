@@ -4,6 +4,8 @@ import React from "react";
 
 import LineChart from "./LineChart";
 
+import HowtoPlay from "./HowtoPlay";
+
 class LoginGraph extends React.Component {
   render() {
     return (
@@ -18,7 +20,8 @@ class LoginGraph extends React.Component {
             <button className="register">Register</button>
           </div>
         </nav>
-        <LineChart />
+        {/* <HowtoPlay />
+        <LineChart /> */}
       </div>
     );
   }
