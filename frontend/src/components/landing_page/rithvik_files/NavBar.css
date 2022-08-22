@@ -1,0 +1,13 @@
+h1{
+    margin: 0px;
+    font-size: xx-large;
+}
+
+.logo{
+    padding-left: 8px;
+    color: rgb(255, 255, 255); ;
+}
+
+nav{padding: 10px;
+    /* background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%); */
+}

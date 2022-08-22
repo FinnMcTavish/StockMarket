@@ -1,0 +1,83 @@
+.profcard{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.rect{
+    background-color: white;
+    height: 40em;
+    width: 50em;
+    border-radius: 40px;
+    position: relative;
+    left: 380px;
+}
+
+img{
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    /* display:flex;
+    justify-content:center;
+    align-items:center; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+.circle{
+    position: relative;
+    top:20px;
+    display: flex;
+    justify-content: center;
+}
+
+.square{
+    height: 150px;
+    width: 150px;
+    background-color: #B9FFF8;
+    margin: 10px;
+    border-radius: 25px;
+}
+
+.square-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.square-parent{
+    margin-top: 50px;
+}
+
+h4{
+    font-weight: 400;
+}
+
+.date{
+    font-weight: 600;
+    color:blueviolet;
+}
+
+.circle .points{
+    color: rgb(69, 25, 211);
+}
+
+.circle .points-num{
+    margin-left: 7px;
+    color: rgb(192, 65, 26);
+}
+
+
+
+.points-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.points-container img{
+    height: 30px;
+    width: 30px;
+    margin-left: px;
+}
