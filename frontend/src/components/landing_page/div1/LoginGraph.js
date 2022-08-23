@@ -7,7 +7,7 @@ import StonksMan from "../../../assets/stonks man.png";
 class LoginGraph extends React.Component {
   render() {
     let h = window.screen.availHeight;
-    let w = window.screen.availWidth - 50;
+    let w = window.screen.availWidth;
     const mystyle = {
       maxHeight: h,
       maxWidth: w,
