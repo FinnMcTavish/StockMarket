@@ -104,7 +104,7 @@ class LineChart extends React.Component {
         ],
       },
     };
-    console.log(window.screen.availHeight);
+
     return (
       <div className="container">
         <Line
@@ -120,11 +120,11 @@ class LineChart extends React.Component {
                 label: this.state.selected,
                 data: this.state.yValue,
                 fill: true,
-                backgroundColor: "#b84bc033",
-                borderColor: "#7928ca",
+                backgroundColor: "#6ab7e733",
+                borderColor: "#288fca",
 
                 pointStyle: "star",
-                pointBorderColor: "#8004fc",
+                pointBorderColor: "#06659f",
                 pointBackgroundColor: "white",
               },
             ],
