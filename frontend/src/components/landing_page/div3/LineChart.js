@@ -33,12 +33,18 @@ class LineChart extends React.Component {
       .then((data) => {
         // console.log(data["Time Series (Daily)"]["2022-08-12"]["1. open"]);
         let skip = 0;
+        let total = 35;
+        let count = 0;
         for (let i in data["Time Series (Daily)"]) {
           if (skip % 25 === 0) {
+            count++;
             dates_json.push(i);
             values_json.push(data["Time Series (Daily)"][i]["1. open"]);
           }
           skip++;
+          if (count > total) {
+            break;
+          }
         }
         this.setState({
           xValue: dates_json,
@@ -68,7 +74,7 @@ class LineChart extends React.Component {
       scales: {
         xAxes: [
           {
-            display: false,
+            display: true,
             scaleLabel: {
               display: true,
               labelString: "Date - >",
@@ -98,9 +104,12 @@ class LineChart extends React.Component {
         ],
       },
     };
+    console.log(window.screen.availHeight);
     return (
       <div className="container">
         <Line
+          height={window.screen.availHeight - 200}
+          width={window.screen.availWidth - 100}
           datasetIdKey="id"
           options={options}
           data={{
