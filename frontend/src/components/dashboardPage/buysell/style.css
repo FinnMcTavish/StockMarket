@@ -1,0 +1,23 @@
+/* body {
+    background-color: aqua;
+} */
+
+.container {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+.fitter {
+    width: 350px;
+    height: 250px;
+}
+
+.com {
+    color: red;
+}
+
+.colcontainer {
+    display: flex;
+    flex-direction: column;
+}
