@@ -1,23 +1,35 @@
-/* body {
-    background-color: aqua;
-} */
-
 .container {
     width: fit-content;
     display: flex;
     flex-direction: row;
-}
-
-.fitter {
-    width: 350px;
-    height: 250px;
+    background-color: wheat;
 }
 
 .com {
-    color: red;
+    color: #7928ca;
+    margin-top: 100px;
+    font-size: 30px;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+button {
+    padding: 0px 43px;
+    height: 45px;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: medium;
 }
 
 .colcontainer {
     display: flex;
     flex-direction: column;
+    margin-top: 100px;
 }
