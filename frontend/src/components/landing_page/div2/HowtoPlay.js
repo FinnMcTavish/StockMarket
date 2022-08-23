@@ -3,26 +3,19 @@ import "./howtoplaystyle.css";
 
 class HowtoPlay extends React.Component {
   render() {
+    let h = window.screen.availHeight;
+    let w = window.screen.availWidth;
+    const mystyle = {
+      minHeight: h - 150,
+      maxWidth: w,
+    };
     return (
       <div className="bodys">
-        <center>
-          <h1 className="howtoplay">How to Play</h1>
-        </center>
-
-        <div className="cards-list">
+        <div className="cards-list" style={mystyle}>
+          <center>
+            <h1 className="howtoplay">How to Play</h1>
+          </center>
           <div className="card">
-            <div className="card_title title-white">
-              <p>How to play ?</p>
-            </div>
-          </div>
-
-          <div className="card ">
-            <div className="card_title title-white">
-              <p>How to play ?</p>
-            </div>
-          </div>
-
-          <div className="card ">
             <div className="card_title title-white">
               <p>How to play ?</p>
             </div>

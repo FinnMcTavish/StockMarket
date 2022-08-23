@@ -3,6 +3,7 @@ import "./style.css";
 import React from "react";
 
 import StonksMan from "../../../assets/stonks man.png";
+import GraphImage from "../../../assets/graph-image.png";
 
 class LoginGraph extends React.Component {
   render() {
@@ -26,7 +27,7 @@ class LoginGraph extends React.Component {
         </nav>
         <div className=" image-fix">
           <img src={StonksMan} alt="Stonks Man" />
-          <img src={StonksMan} alt="Stonks Man" />
+          <img src={GraphImage} alt="Stonks Man" />
         </div>
       </div>
     );

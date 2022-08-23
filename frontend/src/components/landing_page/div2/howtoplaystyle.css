@@ -1,33 +1,30 @@
 .bodys {
     background-color: rgb(16, 16, 17);
-    border-style: solid;
-    border-radius: 10px;
-    box-shadow: 0 0 7px #fff, 0 0 10px #7928ca, 0 0 21px #7928ca;
-    margin: 50px 30px;
+    margin: 20px;
 }
 
 .howtoplay {
-    margin: 70px 0px 40px 0px;
+    margin-top: 40px;
     color: white;
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #7928ca, 0 0 40px #7928ca, 0 0 50px #7928ca, 0 0 60px #7928ca, 0 0 70px #7928ca;
 }
 
 .cards-list {
     z-index: 0;
-    width: fit-content;
+    width: 98%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    /* border-style: solid;
+    border-style: solid;
     border-radius: 10px;
-    border-color: #26bf47;
-    box-shadow: 0 0 10px #26bf47; */
+    border-color: #7928ca;
+    box-shadow: 0 0 10px #7928ca;
 }
 
 .card {
     margin: 30px auto;
-    width: 500px;
-    height: 300px;
+    width: 90%;
+    height: 450px;
     border-radius: 40px;
     box-shadow: 5px 5px 30px 7px rgba(255, 255, 255, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
     cursor: pointer;
@@ -36,12 +33,6 @@
 }
 
 .card .card_image {
-    width: inherit;
-    height: inherit;
-    border-radius: 40px;
-}
-
-.card .card_image img {
     width: inherit;
     height: inherit;
     border-radius: 40px;

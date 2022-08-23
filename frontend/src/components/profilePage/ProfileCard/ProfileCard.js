@@ -36,17 +36,9 @@ function ProfileCard() {
               <Square title="AAA" />
               <Square title="BBB" />
             </div>
-            <div className="square-container">
-              <Square title="CCC" />
-              <Square title="DDD" />
-              <Square title="EEE" />
-              <Square title="FFF" />
-            </div>
           </div>
         </div>
-
       </center>
-      
     </section>
   );
 }
