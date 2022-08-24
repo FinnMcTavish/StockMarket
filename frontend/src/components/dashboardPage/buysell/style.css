@@ -1,23 +1,53 @@
-/* body {
-    background-color: aqua;
-} */
-
 .container {
-    width: fit-content;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    background-color: rgb(59, 57, 71);
+    width: fit-content;
+    align-self: center;
 }
 
-.fitter {
-    width: 350px;
-    height: 250px;
+.Borders{
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #7928ca;
+    box-shadow: 0 0 10px #7928ca;
+    align-self: center;
+}
+
+.innerBox{
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 50 auto;
+    
 }
 
 .com {
-    color: red;
+    color: #7928ca;
+    margin-top: 100px;
+    font-size: 30px;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+button {
+    padding: 0px 43px;
+    height: 45px;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: medium;
 }
 
 .colcontainer {
     display: flex;
     flex-direction: column;
+    margin-top: 100px;
 }
