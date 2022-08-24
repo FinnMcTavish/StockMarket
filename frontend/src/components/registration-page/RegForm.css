@@ -1,0 +1,40 @@
+body{
+    color: blue;
+}
+
+h2{
+    color: white;
+}
+
+.regform{
+    height: 250px;
+    width: 400px;
+    background-color: #D61C4E;
+    border-radius: 30px;
+}
+
+input{
+    width: 290px;
+    border-color:brown;
+    border-width: 1px;
+    height: 15px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.inp{
+    /* position: relative;
+    top: 40px; */
+    margin-top: 40px;
+}
+
+.but-sub{
+    position: relative;
+    top:;
+    background-color: #FEDB39;
+    border: none;
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    
+}
