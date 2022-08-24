@@ -1,8 +1,26 @@
 .container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(59, 57, 71);
     width: fit-content;
+    align-self: center;
+}
+
+.Borders{
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #7928ca;
+    box-shadow: 0 0 10px #7928ca;
+    align-self: center;
+}
+
+.innerBox{
+    width: inherit;
     display: flex;
     flex-direction: row;
-    background-color: wheat;
+    justify-content: center;
+    margin: 50 auto;
+    
 }
 
 .com {
