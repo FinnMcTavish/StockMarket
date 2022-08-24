@@ -15,11 +15,12 @@ h2{
 
 input{
     width: 290px;
-    border-color:brown;
+    border-color:#FEDB39;
     border-width: 1px;
     height: 15px;
     margin-bottom: 10px;
     padding: 5px;
+    border-radius: 8px;
 }
 
 .inp{
@@ -32,7 +33,7 @@ input{
     background-color: #FEDB39;
     border: none;
     height: 30px;
-    width: 80px;
+    /* width: 80px; */
     border-radius: 5px;
     
 }
