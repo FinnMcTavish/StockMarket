@@ -1,35 +1,32 @@
-import React from 'react'
-import './RegForm.css'
+import React from "react";
+import "./RegForm.css";
 // import picus from '../'
 function RegForm() {
   return (
     <div>
-        <center>
-            <div className='regform'>
-                <h2>Registration</h2>
-                <div className='inp'>
-                    <div className='inp2'>
-                        <input type="text" placeholder='Username'></input>
-                        {/* <img src='{picus}'></img> */}
+      <center>
+        <form>
+          <div className="regform">
+            <h2>Registration</h2>
+            <div className="inp">
+              <div className="inp2">
+                <input type="text" placeholder="Username" required></input>
+                {/* <img src='{picus}'></img> */}
+              </div>
 
-                    </div>
-                    
-                    <input type="text" placeholder='Password'></input>
-                </div>
-                
-                <div>
-                    <button className='but-sub'>Submit</button>
-                </div>
-
-                
-                
-            
-
+              <input type="text" placeholder="Password" required></input>
             </div>
-        </center>
-        
+
+            <div>
+              <button type="submit" className="but-sub">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </center>
     </div>
-  )
+  );
 }
 
-export default RegForm
+export default RegForm;
