@@ -4,23 +4,35 @@
     background-color: rgb(59, 57, 71);
     width: fit-content;
     align-self: center;
+    width: 82%;
+    margin-left: 70px;
 }
 
-.Borders{
+.Borders {
     border-style: solid;
     border-radius: 10px;
     border-color: #7928ca;
     box-shadow: 0 0 10px #7928ca;
     align-self: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.innerBox{
+.Borders>div {
+    flex: 50%;
+    /* or - flex: 0 50% - or - flex-basis: 50% - */
+    /*demo*/
+    box-shadow: 0 0 0 3px #7928ca;
+    margin-bottom: 10px;
+}
+
+.innerBox {
     width: inherit;
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin: 50 auto;
-    
 }
 
 .com {

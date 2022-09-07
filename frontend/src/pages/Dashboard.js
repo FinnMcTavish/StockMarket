@@ -6,7 +6,7 @@ import GraphMaker from "../components/dashboardPage/GraphMaker/GraphMaker";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div style={{ width: "90%", marginLeft: "120px" }}>
       <BuySell />
       {/* <GraphMaker product="IBM" height={300} width={550} /> */}
     </div>
