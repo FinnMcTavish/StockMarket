@@ -106,9 +106,9 @@ class LineChart extends React.Component {
     };
 
     return (
-      <div className="container">
+      <div className="container" style={{ marginLeft: "8%" }}>
         <Line
-          height={window.screen.availHeight - 200}
+          height={window.screen.availHeight - 100}
           width={window.screen.availWidth - 100}
           datasetIdKey="id"
           options={options}

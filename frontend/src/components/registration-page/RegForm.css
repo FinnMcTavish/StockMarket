@@ -1,21 +1,21 @@
-body{
+body {
     color: blue;
 }
 
-h2{
+h2 {
     color: white;
 }
 
-.regform{
-    height: 250px;
+.regform {
+    height: 400px;
     width: 400px;
-    background-color: #D61C4E;
+    background-color: #d61c4e;
     border-radius: 30px;
 }
 
-input{
+input {
     width: 290px;
-    border-color:#FEDB39;
+    border-color: #fedb39;
     border-width: 1px;
     height: 15px;
     margin-bottom: 10px;
@@ -23,17 +23,20 @@ input{
     border-radius: 8px;
 }
 
-.inp{
+.inp {
     /* position: relative;
     top: 40px; */
     margin-top: 40px;
 }
 
-.but-sub{
-    background-color: #FEDB39;
+.but-sub {
+    background-color: #fedb39;
     border: none;
     height: 30px;
     /* width: 80px; */
     border-radius: 5px;
-    
+}
+
+.rad {
+    width: 20px;
 }
