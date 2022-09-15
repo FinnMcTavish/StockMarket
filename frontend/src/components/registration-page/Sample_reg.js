@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
-function Sample() {
+function Sample_reg() {
   const [listOfUsers, setListOfUsers] = useState([]);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -15,7 +15,7 @@ function Sample() {
   const createUser = () => {
     Axios.get("http://localhost:3002/getUsers").then((response) => {
       for (var i = 0; i < response.data.length; i++) {
-        if (response.data[i]["username"] == username) {
+        if (response.data[i]["username"] === username) {
           alert("Username " + response.data[i]["username"] + " already exist!");
 
           console.log("User already exist!");
@@ -23,6 +23,8 @@ function Sample() {
         }
       }
       console.log("User created");
+      sessionStorage.setItem("username", username);
+      console.log("Logged in as " + sessionStorage.getItem("username"));
       Axios.post("http://localhost:3002/createUser", {
         username,
         password,
@@ -39,11 +41,11 @@ function Sample() {
   };
 
   return (
-    <div className="Sample">
+    <div className="Sample_reg">
       <div className="usersDisplay">
         {listOfUsers.map((user) => {
           return (
-            <div>
+            <div key={user.username}>
               <h1>Username: {user.username}</h1>
               <h1>Password: {user.password}</h1>
             </div>
@@ -72,4 +74,4 @@ function Sample() {
   );
 }
 
-export default Sample;
+export default Sample_reg;
