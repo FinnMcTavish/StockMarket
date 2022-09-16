@@ -10,9 +10,9 @@ function Registration() {
     <div>
       <NavBar />
       {/* <RegForm /> */}
-      {/* <Sample_reg /> */}
+      <Sample_reg />
 
-      <Sample_login />
+      {/* <Sample_login /> */}
     </div>
   );
 }

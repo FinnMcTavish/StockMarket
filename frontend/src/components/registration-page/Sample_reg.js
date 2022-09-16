@@ -3,6 +3,7 @@ import Axios from "axios";
 
 function Sample_reg() {
   const [listOfUsers, setListOfUsers] = useState([]);
+  const [listOfData, setListOfData] = useState([]);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
@@ -10,7 +11,71 @@ function Sample_reg() {
     Axios.get("http://localhost:3002/getUsers").then((response) => {
       setListOfUsers(response.data);
     });
+    Axios.get("http://localhost:3002/getData").then((response) => {
+      setListOfData(response.data);
+    });
   }, []);
+  //{"username":"dani","coins":0,"IBM":0,"TSCO":0,"DAI":0,"SHOP":0,"GPV":0,"RELIANCE":0,"start":new Date()}
+  const dataCreator = () => {
+    var today = new Date();
+
+    var date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    const coins = 0,
+      IBM = 0,
+      TSCO = 0,
+      DAI = 0,
+      SHOP = 0,
+      GPV = 0,
+      RELIANCE = 0,
+      start = date;
+
+    Axios.post("http://localhost:3002/createData", {
+      username,
+      coins,
+      IBM,
+      TSCO,
+      DAI,
+      SHOP,
+      GPV,
+      RELIANCE,
+      start,
+    }).then((response) => {
+      setListOfData([
+        ...listOfData,
+        {
+          username,
+          coins,
+          IBM,
+          TSCO,
+          DAI,
+          SHOP,
+          GPV,
+          RELIANCE,
+          start,
+        },
+      ]);
+    });
+  };
+
+  const userCreator = () => {
+    Axios.post("http://localhost:3002/createUser", {
+      username,
+      password,
+    }).then((response) => {
+      setListOfUsers([
+        ...listOfUsers,
+        {
+          username,
+          password,
+        },
+      ]);
+    });
+  };
 
   const createUser = () => {
     Axios.get("http://localhost:3002/getUsers").then((response) => {
@@ -25,18 +90,8 @@ function Sample_reg() {
       console.log("User created");
       sessionStorage.setItem("username", username);
       console.log("Logged in as " + sessionStorage.getItem("username"));
-      Axios.post("http://localhost:3002/createUser", {
-        username,
-        password,
-      }).then((response) => {
-        setListOfUsers([
-          ...listOfUsers,
-          {
-            username,
-            password,
-          },
-        ]);
-      });
+      userCreator();
+      dataCreator();
     });
   };
 
@@ -56,7 +111,7 @@ function Sample_reg() {
       <div>
         <input
           type="text"
-          placeholder="Username..."
+          placeholder="Username"
           onChange={(event) => {
             setUsername(event.target.value);
           }}
