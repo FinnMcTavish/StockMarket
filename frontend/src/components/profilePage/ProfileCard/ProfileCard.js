@@ -3,7 +3,6 @@ import "./ProfileCard.css";
 import pic from "../../../assets/blue-transparent.png";
 import Square from "../Square/Square";
 import point from "../../../assets/point.png";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
@@ -26,7 +25,7 @@ function ProfileCard() {
       <center>
         <div className="rect">
           <div className="circle">
-            <img src={pic}></img>
+            <img src={pic} alt="profilePic"></img>
           </div>
           <div className="circle">
             <div className="parent">
@@ -37,7 +36,7 @@ function ProfileCard() {
               <div className="points-container">
                 <h3 className="points">POINTS</h3>
                 <h3 className="points-num">{profileData.coins}</h3>
-                <img className="coin" src={point}></img>
+                <img className="coin" src={point} alt="Coin" />
               </div>
 
               <h4 className="play-from">
