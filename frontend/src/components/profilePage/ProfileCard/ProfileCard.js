@@ -37,7 +37,7 @@ function ProfileCard() {
               <div className="points-container">
                 <h3 className="points">POINTS</h3>
                 <h3 className="points-num">{profileData.coins}</h3>
-                <img classname="coin" src={point}></img>
+                <img className="coin" src={point}></img>
               </div>
 
               <h4 className="play-from">

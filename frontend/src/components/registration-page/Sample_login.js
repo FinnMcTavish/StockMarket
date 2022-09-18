@@ -1,9 +1,12 @@
 import Axios from "axios";
-import React from "react";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { React, useState, useEffect } from "react";
 function Sample_login() {
+  useEffect(() => {
+    if (!sessionStorage.getItem("username")) {
+      alert("Session expired!");
+    }
+  }, []);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
@@ -16,6 +19,7 @@ function Sample_login() {
           if (response.data[i]["password"] === password) {
             alert("Welcome " + response.data[i]["username"] + " !");
             sessionStorage.setItem("username", username);
+            sessionStorage.setItem("active", new Date().getTime());
             navigate("/");
             return "Login Success";
           } else {

@@ -13,6 +13,7 @@ class LoginGraph extends React.Component {
       maxHeight: h,
       maxWidth: w,
     };
+    // const history = useHistory();
     return (
       <div style={mystyle}>
         {" "}
@@ -21,8 +22,16 @@ class LoginGraph extends React.Component {
             <h1 className="title">Stonks</h1>
           </div>
           <div className="small-flex">
-            <button className="login">Login</button>
-            <button className="register">Register</button>
+            <form action="/login">
+              <button type="submit" className="login">
+                Login
+              </button>
+            </form>
+            <form action="/registration">
+              <button type="submit" className="register">
+                Register
+              </button>
+            </form>
           </div>
         </nav>
         <div className=" image-fix">

@@ -89,6 +89,7 @@ function Sample_reg() {
       }
       console.log("User created");
       sessionStorage.setItem("username", username);
+      sessionStorage.setItem("active", new Date().getTime());
       console.log("Logged in as " + sessionStorage.getItem("username"));
       userCreator();
       dataCreator();
