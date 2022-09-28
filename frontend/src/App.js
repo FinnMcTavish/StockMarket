@@ -1,10 +1,14 @@
 import "./App.css";
 import { useState } from "react";
+import React from "react";
+
 
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import MainPage from "./pages/MainPage";
+
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Registration from "./pages/Registration";
@@ -30,6 +34,7 @@ const App = () => {
           element={!username ? <Navigate to="/login" /> : <Dashboard />}
         />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/MainPage" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/profile"
