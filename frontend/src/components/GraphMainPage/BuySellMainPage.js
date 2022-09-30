@@ -27,10 +27,17 @@ class BuySellMainPage extends Component {
   }
 
   componentDidMount() {
-    this.setUserProductData();
     this.setTodayPrice(this.state.product);
+    this.setUserProductData(this.state.product);
     this.setProfit();
   }
+
+  updateData = (product) => {
+    this.setState({ product: product.split(".")[0] });
+    this.setTodayPrice(product);
+    this.setUserProductData(product);
+    this.setProfit();
+  };
 
   setProfit = () => {
     this.setState({
@@ -39,7 +46,7 @@ class BuySellMainPage extends Component {
     });
   };
 
-  setUserProductData = async () => {
+  setUserProductData = async (product) => {
     const username = sessionStorage.getItem("username");
 
     await Axios.get("http://localhost:3002/getData").then((response) => {
@@ -47,7 +54,7 @@ class BuySellMainPage extends Component {
         if (response.data[i]["username"] === username) {
           this.setState({
             userData: response.data[i],
-            productPrice: response.data[i][this.state.product]["cp"],
+            productPrice: response.data[i][product.split(".")[0]]["cp"],
           });
           // console.log(this.state.userData);
         }
@@ -95,7 +102,7 @@ class BuySellMainPage extends Component {
       let cp = this.state.productPrice;
       let buyPrice = this.state.number * this.state.todayPrice;
       const coins = this.state.userData.coins - buyPrice;
-      cp = (cp * times + buyPrice) / (times + 1);
+      cp = (cp * stocks + buyPrice) / (stocks + this.state.number);
       times += 1;
       stocks += this.state.number;
       alert("Stocks bought successfully!");
@@ -103,18 +110,43 @@ class BuySellMainPage extends Component {
         `${this.state.number} ${this.state.product} stocks bought for ${buyPrice}. Coins have ${coins}. Avg = ${cp}, times= ${times}. Number of ${this.state.product} stocks= ${stocks}`
       );
     }
-    //  product: "IBM",
-    //   number: 0,
-    //   userData: {},
-    //   todayPrice: 0,
-    //   productPrice: 0,
-    //   buyGain: 0,
-    //   sellGain: 0,
     console.log("Bought item");
   };
-  sellItem() {
+  sellItem = async () => {
+    if (this.state.number <= 0) {
+      alert("Please specify the proper stock value");
+      this.nameInput.focus();
+      return;
+    } else if (this.state.number == undefined || this.state.number == "") {
+      alert("Please specify the number of tasks");
+      this.nameInput.focus();
+      return;
+    }
+    let stocks = this.state.userData[this.state.product]["stocks"];
+    if (this.state.number > stocks) {
+      alert(
+        `You don't have ${this.state.number} ${this.state.product} stocks. You only have ${stocks}`
+      );
+      this.nameInput.focus();
+      return;
+    } else {
+      let stocks = this.state.userData[this.state.product]["stocks"];
+      let times = this.state.userData[this.state.product]["times"];
+      let cp = this.state.productPrice;
+      let sellPrice = this.state.number * this.state.todayPrice;
+      const coins = this.state.userData.coins + sellPrice;
+
+      cp = (cp * stocks - sellPrice) / (stocks - this.state.number);
+      times += 1;
+      stocks -= this.state.number;
+      alert("Stocks sold successfully!");
+      console.log(
+        `${this.state.number} ${this.state.product} stocks sold for ${sellPrice}. Coins have ${coins}. Avg = ${cp}, times= ${times}. Number of ${this.state.product} stocks= ${stocks}`
+      );
+    }
+
     console.log("Sell item");
-  }
+  };
 
   render() {
     return (
@@ -137,7 +169,8 @@ class BuySellMainPage extends Component {
               <li>
                 <a
                   onClick={() => {
-                    this.setState({ product: "IBM" });
+                    this.updateData("IBM");
+                    // this.setState({ product: "IBM" });
                   }}
                   href="#"
                 >
@@ -147,7 +180,8 @@ class BuySellMainPage extends Component {
               <li>
                 <a
                   onClick={() => {
-                    this.setState({ product: "TSCO.LON" });
+                    this.updateData("TSCO.LON");
+                    // this.setState({ product: "TSCO.LON" });
                   }}
                   href="#"
                 >
@@ -157,7 +191,8 @@ class BuySellMainPage extends Component {
               <li>
                 <a
                   onClick={() => {
-                    this.setState({ product: "SHOP.TRT" });
+                    this.updateData("SHOP.TRT");
+                    // this.setState({ product: "SHOP.TRT" });
                   }}
                   href="#"
                 >
@@ -167,7 +202,8 @@ class BuySellMainPage extends Component {
               <li>
                 <a
                   onClick={() => {
-                    this.setState({ product: "DAI.DEX" });
+                    this.updateData("DAI.DEX");
+                    // this.setState({ product: "DAI.DEX" });
                   }}
                   href="#"
                 >
