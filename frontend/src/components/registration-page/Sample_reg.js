@@ -15,7 +15,7 @@ function Sample_reg() {
       setListOfData(response.data);
     });
   }, []);
-  //{"username":"dani","coins":0,"IBM":0,"TSCO":0,"DAI":0,"SHOP":0,"GPV":0,"RELIANCE":0,"start":new Date()}
+  // {"username":"dani","coins":0,"IBM":{stocks:0,times:0,cp:0},"TSCO":{stocks:0,times:0,cp:0},"DAI":{stocks:0,times:0,cp:0},"SHOP":{stocks:0,times:0,cp:0},"GPV":{stocks:0,times:0,cp:0},"RELIANCE":{stocks:0,times:0,cp:0},"start":new Date()}
   const dataCreator = () => {
     var today = new Date();
 
@@ -26,16 +26,18 @@ function Sample_reg() {
       "-" +
       today.getDate();
     const coins = 0,
-      IBM = 0,
-      TSCO = 0,
-      DAI = 0,
-      SHOP = 0,
-      GPV = 0,
-      RELIANCE = 0,
+      profit = 0,
+      IBM = { stocks: 0, times: 0, cp: 0 },
+      TSCO = { stocks: 0, times: 0, cp: 0 },
+      DAI = { stocks: 0, times: 0, cp: 0 },
+      SHOP = { stocks: 0, times: 0, cp: 0 },
+      GPV = { stocks: 0, times: 0, cp: 0 },
+      RELIANCE = { stocks: 0, times: 0, cp: 0 },
       start = date;
 
     Axios.post("http://localhost:3002/createData", {
       username,
+      profit,
       coins,
       IBM,
       TSCO,
@@ -49,6 +51,7 @@ function Sample_reg() {
         ...listOfData,
         {
           username,
+          profit,
           coins,
           IBM,
           TSCO,
