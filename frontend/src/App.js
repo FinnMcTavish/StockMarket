@@ -2,13 +2,11 @@ import "./App.css";
 import { useState } from "react";
 import React from "react";
 
-
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
-
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Registration from "./pages/Registration";
@@ -16,9 +14,10 @@ import Registration from "./pages/Registration";
 const App = () => {
   const [active, setActive] = useState(sessionStorage.getItem("active"));
 
-  if (new Date().getTime() - active > 5 * 60 * 1000 || !active) {
+  if (new Date().getTime() - active > 100 * 60 * 1000 || !active) {
     sessionStorage.clear();
     // alert("Session expired!");
+    //x*60*1000 = x minutes
   } else {
     // setActive(new Date().getTime());
     sessionStorage.setItem("active", new Date().getTime());

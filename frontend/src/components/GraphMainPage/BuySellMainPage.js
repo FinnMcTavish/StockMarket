@@ -30,6 +30,39 @@ class BuySellMainPage extends Component {
     });
   }
 
+  // getYesterday() {
+  //   var d = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24),
+  //     month = "" + (d.getMonth() + 1),
+  //     day = "" + d.getDate(),
+  //     year = d.getFullYear();
+
+  //   if (month.length < 2) month = "0" + month;
+  //   if (day.length < 2) day = "0" + day;
+
+  //   return [year, month, day].join("-");
+  // }
+
+  buyItem = async () => {
+    const API_REQ = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&outputsize=full&apikey=demo`;
+    await fetch(API_REQ)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        let lastValue =
+          data["Time Series (Daily)"][
+            Object.keys(data["Time Series (Daily)"])[0]
+          ][["1. open"]];
+
+        console.log(lastValue);
+      });
+
+    console.log("Bought item");
+  };
+  sellItem() {
+    console.log("Sell item");
+  }
+
   render() {
     return (
       <div className="container Borders">
@@ -93,8 +126,12 @@ class BuySellMainPage extends Component {
         </div>
         <input type={"number"} required defaultValue={"0"} />
         <div className="colcontainer">
-          <button className="green">Buy</button>
-          <button className="red">Sell</button>
+          <button onClick={this.buyItem} className="green">
+            Buy
+          </button>
+          <button onClick={this.sellItem} className="red">
+            Sell
+          </button>
         </div>
       </div>
     );
