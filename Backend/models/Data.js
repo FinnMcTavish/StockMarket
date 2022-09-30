@@ -5,36 +5,100 @@ const DataSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  profit: {
+    type: Number,
+    required: true,
+  },
   coins: {
     type: Number,
     required: true,
   },
   IBM: {
-    type: Number,
-    required: true,
+    stocks: {
+      type: Number,
+      required: true,
+    },
+    times: {
+      type: Number,
+      required: true,
+    },
+    cp: {
+      type: Number,
+      required: true,
+    },
   },
   TSCO: {
-    type: Number,
-    required: true,
+    stocks: {
+      type: Number,
+      required: true,
+    },
+    times: {
+      type: Number,
+      required: true,
+    },
+    cp: {
+      type: Number,
+      required: true,
+    },
   },
   DAI: {
-    type: Number,
-    required: true,
+    stocks: {
+      type: Number,
+      required: true,
+    },
+    times: {
+      type: Number,
+      required: true,
+    },
+    cp: {
+      type: Number,
+      required: true,
+    },
   },
   SHOP: {
-    type: Number,
-    required: true,
+    stocks: {
+      type: Number,
+      required: true,
+    },
+    times: {
+      type: Number,
+      required: true,
+    },
+    cp: {
+      type: Number,
+      required: true,
+    },
   },
   GPV: {
-    type: Number,
-    required: true,
+    stocks: {
+      type: Number,
+      required: true,
+    },
+    times: {
+      type: Number,
+      required: true,
+    },
+    cp: {
+      type: Number,
+      required: true,
+    },
   },
   RELIANCE: {
-    type: Number,
-    required: true,
+    stocks: {
+      type: Number,
+      required: true,
+    },
+    times: {
+      type: Number,
+      required: true,
+    },
+    cp: {
+      type: Number,
+      required: true,
+    },
   },
   start: {
-    type: String,
+    type: Object,
     required: true,
   },
 });
