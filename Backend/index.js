@@ -53,6 +53,47 @@ app.post("/createData", async (req, res) => {
   res.json(data);
 });
 
+app.put("/update/:username", async (req, res) => {
+  let username = req.params.username;
+  let profit = req.body.profit;
+  let coins = req.body.coins;
+  let IBM = req.body.IBM;
+  let TSCO = req.body.DISCO;
+  let DAI = req.body.DAI;
+  let SHOP = req.body.SHOP;
+  let GPV = req.body.GPV;
+  let RELIANCE = req.body.RELIANCE;
+  let start = req.body.start;
+  DataModel.findOneAndUpdate(
+    { username: username },
+    {
+      $set: {
+        profit: profit,
+        coins: coins,
+        IBM: IBM,
+        TSCO: TSCO,
+        DAI: DAI,
+        SHOP: SHOP,
+        GPV: GPV,
+        RELIANCE: RELIANCE,
+        start: start,
+      },
+    },
+    { new: true },
+    (err, data) => {
+      if (err) {
+        res.send(err);
+      } else {
+        if (data == null) {
+          res.send("Nothing found!");
+        } else {
+          res.send(data);
+        }
+      }
+    }
+  );
+});
+
 app.listen(3002, () => {
   console.log("Running on http://localhost:3002");
 });
