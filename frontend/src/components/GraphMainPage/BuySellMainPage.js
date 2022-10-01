@@ -34,8 +34,9 @@ class BuySellMainPage extends Component {
 
   updateData = (product) => {
     this.setState({ product: product.split(".")[0] });
+    console.log(this.state.product);
     this.setTodayPrice(product);
-    this.setUserProductData(product);
+    this.setUserProductData(this.state.product);
     this.setProfit();
   };
 
@@ -77,6 +78,15 @@ class BuySellMainPage extends Component {
       });
   };
 
+  putData = async (data) => {
+    const username = sessionStorage.getItem("username");
+    Axios.put(`http://localhost:3002/update/${username}`, data).then(
+      (response) => {
+        console.log(response.data);
+      }
+    );
+  };
+
   buyItem = async () => {
     if (this.state.number <= 0) {
       alert("Please specify the proper stock value");
@@ -97,20 +107,30 @@ class BuySellMainPage extends Component {
       );
       return;
     } else {
-      let stocks = this.state.userData[this.state.product]["stocks"];
+      let stocks = parseFloat(
+        this.state.userData[this.state.product]["stocks"]
+      );
       let times = this.state.userData[this.state.product]["times"];
       let cp = this.state.productPrice;
       let buyPrice = this.state.number * this.state.todayPrice;
       const coins = this.state.userData.coins - buyPrice;
       cp = (cp * stocks + buyPrice) / (stocks + this.state.number);
       times += 1;
-      stocks += this.state.number;
+      stocks += parseFloat(this.state.number);
       alert("Stocks bought successfully!");
       console.log(
         `${this.state.number} ${this.state.product} stocks bought for ${buyPrice}. Coins have ${coins}. Avg = ${cp}, times= ${times}. Number of ${this.state.product} stocks= ${stocks}`
       );
+
+      let userData = this.state.userData;
+      userData.coins = coins;
+      userData[this.state.product].stocks = stocks;
+      userData[this.state.product].times = times;
+      userData[this.state.product].cp = cp;
+      this.setState({ userData: userData });
+      this.putData(userData);
     }
-    console.log("Bought item");
+    console.log("Bought item successfully!");
   };
   sellItem = async () => {
     if (this.state.number <= 0) {
@@ -144,9 +164,17 @@ class BuySellMainPage extends Component {
       console.log(
         `${this.state.number} ${this.state.product} stocks sold for ${sellPrice}. Coins have ${coins}. Avg = ${cp}, times= ${times}. Number of ${this.state.product} stocks= ${stocks}`
       );
+      let userData = this.state.userData;
+      userData.coins = coins;
+      userData[this.state.product].stocks = stocks;
+      //  userData[this.state.product].times = times;
+      userData[this.state.product].cp = cp;
+      userData.profit = profit;
+      this.setState({ userData: userData });
+      this.putData(userData);
+      // this.putData(profit);
     }
-
-    console.log("Sell item");
+    console.log("Sold item successfully!");
   };
 
   render() {
