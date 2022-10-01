@@ -135,9 +135,10 @@ class BuySellMainPage extends Component {
       let cp = this.state.productPrice;
       let sellPrice = this.state.number * this.state.todayPrice;
       const coins = this.state.userData.coins + sellPrice;
-
-      cp = (cp * stocks - sellPrice) / (stocks - this.state.number);
-      times += 1;
+      const profit =
+        this.state.userData.profit + sellPrice - this.state.number * cp;
+      // cp = (cp * stocks - sellPrice) / (stocks - this.state.number);
+      // times += 1;
       stocks -= this.state.number;
       alert("Stocks sold successfully!");
       console.log(
