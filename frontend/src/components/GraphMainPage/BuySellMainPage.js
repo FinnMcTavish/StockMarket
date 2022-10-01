@@ -33,10 +33,10 @@ class BuySellMainPage extends Component {
   }
 
   updateData = (product) => {
-    this.setState({ product: product.split(".")[0] });
+    this.setState({ product: product });
     console.log(this.state.product);
     this.setTodayPrice(product);
-    this.setUserProductData(this.state.product);
+    this.setUserProductData(product.split(".")[0]);
     this.setProfit();
   };
 
@@ -108,10 +108,12 @@ class BuySellMainPage extends Component {
       );
       return;
     } else {
+      // this.setState({ product: this.state.product.split(".")[0] });
       let stocks = parseFloat(
-        this.state.userData[this.state.product]["stocks"]
+        this.state.userData[this.state.product.split(".")[0]]["stocks"]
       );
-      let times = this.state.userData[this.state.product]["times"];
+      let times =
+        this.state.userData[this.state.product.split(".")[0]]["times"];
       let cp = this.state.productPrice;
       let buyPrice = this.state.number * this.state.todayPrice;
       const coins = this.state.userData.coins - buyPrice;
@@ -125,9 +127,9 @@ class BuySellMainPage extends Component {
 
       let userData = this.state.userData;
       userData.coins = coins;
-      userData[this.state.product].stocks = stocks;
-      userData[this.state.product].times = times;
-      userData[this.state.product].cp = cp;
+      userData[this.state.product.split(".")[0]].stocks = stocks;
+      userData[this.state.product.split(".")[0]].times = times;
+      userData[this.state.product.split(".")[0]].cp = cp;
       this.setState({ userData: userData });
       console.log(userData);
       this.putData(userData);
@@ -144,7 +146,8 @@ class BuySellMainPage extends Component {
       this.nameInput.focus();
       return;
     }
-    let stocks = this.state.userData[this.state.product]["stocks"];
+    let stocks =
+      this.state.userData[this.state.product.split(".")[0]]["stocks"];
     if (this.state.number > stocks) {
       alert(
         `You don't have ${this.state.number} ${this.state.product} stocks. You only have ${stocks}`
@@ -152,8 +155,10 @@ class BuySellMainPage extends Component {
       this.nameInput.focus();
       return;
     } else {
-      let stocks = this.state.userData[this.state.product]["stocks"];
-      let times = this.state.userData[this.state.product]["times"];
+      let stocks =
+        this.state.userData[this.state.product.split(".")[0]]["stocks"];
+      let times =
+        this.state.userData[this.state.product.split(".")[0]]["times"];
       let cp = this.state.productPrice;
       let sellPrice = this.state.number * this.state.todayPrice;
       const coins = this.state.userData.coins + sellPrice;
@@ -168,9 +173,9 @@ class BuySellMainPage extends Component {
       );
       let userData = this.state.userData;
       userData.coins = coins;
-      userData[this.state.product].stocks = stocks;
+      userData[this.state.product.split(".")[0]].stocks = stocks;
       //  userData[this.state.product].times = times;
-      userData[this.state.product].cp = cp;
+      userData[this.state.product.split(".")[0]].cp = cp;
       userData.profit = profit;
       this.setState({ userData: userData });
       this.putData(userData);
