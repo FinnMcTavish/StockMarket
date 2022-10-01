@@ -83,6 +83,7 @@ class BuySellMainPage extends Component {
     Axios.put(`http://localhost:3002/update/${username}`, data).then(
       (response) => {
         console.log(response.data);
+        // this.updateData()
       }
     );
   };
@@ -128,6 +129,7 @@ class BuySellMainPage extends Component {
       userData[this.state.product].times = times;
       userData[this.state.product].cp = cp;
       this.setState({ userData: userData });
+      console.log(userData);
       this.putData(userData);
     }
     console.log("Bought item successfully!");
@@ -172,7 +174,6 @@ class BuySellMainPage extends Component {
       userData.profit = profit;
       this.setState({ userData: userData });
       this.putData(userData);
-      // this.putData(profit);
     }
     console.log("Sold item successfully!");
   };
