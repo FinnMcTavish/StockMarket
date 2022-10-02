@@ -41,9 +41,8 @@ const App = () => {
           path="/profile"
           element={!username ? <Navigate to="/login" /> : <Profile />}
         />
-        <Route path="/buy" element={<BuyPage}/>
-        <Route path="/sell" element={<SellPage}/>
-        ;
+        <Route path="/buy" element={<BuyPage/>}/>
+        <Route path="/sell" element={<SellPage/>}/>
       </Routes>
     </BrowserRouter>
   );
