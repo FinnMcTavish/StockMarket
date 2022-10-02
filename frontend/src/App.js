@@ -10,6 +10,8 @@ import MainPage from "./pages/MainPage";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Registration from "./pages/Registration";
+import BuyPage from "./components/buyPage/BuyPage";
+import SellPage from "./components/sellPage/SellPage";
 
 const App = () => {
   const [active, setActive] = useState(sessionStorage.getItem("active"));
@@ -39,6 +41,8 @@ const App = () => {
           path="/profile"
           element={!username ? <Navigate to="/login" /> : <Profile />}
         />
+        <Route path="/buy" element={<BuyPage}/>
+        <Route path="/sell" element={<SellPage}/>
         ;
       </Routes>
     </BrowserRouter>
