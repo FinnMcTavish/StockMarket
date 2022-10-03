@@ -1,12 +1,12 @@
-import React from 'react'
-import Reg from '../components/registration-page/Registration'
+import React from "react";
+import Reg from "../components/registration-page/Registration";
 
 function Registration() {
   return (
     <div>
-        <Reg/>
+      <Reg />
     </div>
-  )
+  );
 }
 
-export default Registration
+export default Registration;

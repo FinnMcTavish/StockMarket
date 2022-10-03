@@ -22,7 +22,7 @@ class LoginGraph extends React.Component {
             <h1 className="title">Stonks</h1>
           </div>
           <div className="small-flex">
-            <form action="/login">
+            <form action="/registration">
               <button type="submit" className="login">
                 Login
               </button>

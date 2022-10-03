@@ -5,7 +5,6 @@ import React from "react";
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -32,17 +31,20 @@ const App = () => {
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route
           path="/dashboard"
-          element={!username ? <Navigate to="/login" /> : <Dashboard />}
+          element={!username ? <Navigate to="/registration" /> : <Dashboard />}
         />
         <Route path="/registration" element={<Registration />} />
-        <Route path="/MainPage" element={<MainPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/MainPage"
+          element={!username ? <Navigate to="/registration" /> : <MainPage />}
+        />
+
         <Route
           path="/profile"
           element={!username ? <Navigate to="/login" /> : <Profile />}
         />
-        <Route path="/buy" element={<BuyPage/>}/>
-        <Route path="/sell" element={<SellPage/>}/>
+        <Route path="/buy" element={<BuyPage />} />
+        <Route path="/sell" element={<SellPage />} />
       </Routes>
     </BrowserRouter>
   );
