@@ -92,6 +92,7 @@ function Sample_reg() {
     });
   };
 
+  const navigate = useNavigate();
   const createUser = () => {
     Axios.get("http://localhost:3002/getUsers").then((response) => {
       for (var i = 0; i < response.data.length; i++) {
@@ -108,13 +109,13 @@ function Sample_reg() {
       console.log("Logged in as " + sessionStorage.getItem("username"));
       userCreator();
       dataCreator();
+      alert(`account created success for ${username}`);
+      navigate("/mainPage");
     });
   };
 
   const [password1, setPassword1] = useState("");
   const [username1, setUsername1] = useState("");
-
-  const navigate = useNavigate();
 
   const confirmUser = (event) => {
     Axios.get("http://localhost:3002/getUsers").then((response) => {
@@ -124,7 +125,7 @@ function Sample_reg() {
             alert("Welcome " + response.data[i]["username"] + " !");
             sessionStorage.setItem("username", username1);
             sessionStorage.setItem("active", new Date().getTime());
-            navigate("/");
+            navigate("/mainPage");
             return "Login Success";
           } else {
             alert("Wrong Password");

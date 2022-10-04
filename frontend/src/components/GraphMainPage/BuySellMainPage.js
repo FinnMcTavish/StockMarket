@@ -4,6 +4,7 @@ import React from "react";
 import Axios from "axios";
 import { Component } from "react";
 import GraphMaker from "./GraphMakerMainPage";
+// import {  } from "react-router-dom";
 //  symbols: [
 //   "IBM",
 //   "TSCO.LON",
@@ -188,7 +189,12 @@ class BuySellMainPage extends Component {
       <div className="container Borders">
         <div className="fitter">
           <GraphMaker product={this.state.product} />
-          <img src={pic} alt="John Doe" className="profile-pic"></img>
+          <img
+            onClick={(event) => (window.location.href = "/profile")}
+            src={pic}
+            alt="John Doe"
+            className="profile-pic"
+          ></img>
           <ul className="slider">
             <li>Points : {this.state.userData["coins"]}</li>
           </ul>

@@ -14,8 +14,18 @@ class BuySell extends Component {
               <GraphMaker product="IBM" height={300} width={550} />
             </div>
             <div className="colcontainer">
-              <button className="green">Buy</button>
-              <button className="red">Sell</button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="green"
+              >
+                Buy
+              </button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="red"
+              >
+                Sell
+              </button>
             </div>
           </div>
           <div className="innerBox">
@@ -24,8 +34,18 @@ class BuySell extends Component {
               <GraphMaker product="TSCO.LON" height={300} width={550} />
             </div>
             <div className="colcontainer">
-              <button className="green">Buy</button>
-              <button className="red">Sell</button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="green"
+              >
+                Buy
+              </button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="red"
+              >
+                Sell
+              </button>
             </div>
           </div>
 
@@ -35,8 +55,18 @@ class BuySell extends Component {
               <GraphMaker product="DAI.DEX" height={300} width={550} />
             </div>
             <div className="colcontainer">
-              <button className="green">Buy</button>
-              <button className="red">Sell</button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="green"
+              >
+                Buy
+              </button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="red"
+              >
+                Sell
+              </button>
             </div>
           </div>
 
@@ -46,8 +76,18 @@ class BuySell extends Component {
               <GraphMaker product="SHOP.TRT" height={300} width={550} />
             </div>
             <div className="colcontainer">
-              <button className="green">Buy</button>
-              <button className="red">Sell</button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="green"
+              >
+                Buy
+              </button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="red"
+              >
+                Sell
+              </button>
             </div>
           </div>
 
@@ -57,8 +97,18 @@ class BuySell extends Component {
               <GraphMaker product="GPV.TRV" height={300} width={550} />
             </div>
             <div className="colcontainer">
-              <button className="green">Buy</button>
-              <button className="red">Sell</button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="green"
+              >
+                Buy
+              </button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="red"
+              >
+                Sell
+              </button>
             </div>
           </div>
 
@@ -68,8 +118,18 @@ class BuySell extends Component {
               <GraphMaker product="RELIANCE.BSE" height={300} width={550} />
             </div>
             <div className="colcontainer">
-              <button className="green">Buy</button>
-              <button className="red">Sell</button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="green"
+              >
+                Buy
+              </button>
+              <button
+                onClick={(event) => (window.location.href = "/mainPage")}
+                className="red"
+              >
+                Sell
+              </button>
             </div>
           </div>
         </div>
