@@ -190,16 +190,17 @@ class BuySellMainPage extends Component {
         <div className="fitter">
           <div className="doe-points">
             <div>
-              <img src={pic} alt="John Doe" className="profile-pic"></img>
+              <img
+                onClick={(event) => (window.location.href = "/profile")}
+                src={pic}
+                alt="John Doe"
+                className="profile-pic"
+              ></img>
               <ul className="slider">
                 <li>Points : {this.state.userData["coins"]}</li>
               </ul>
-
             </div>
-            
           </div>
-          
-          
         </div>
         <div className="graph-drop">
           <div className="drop">
@@ -260,13 +261,9 @@ class BuySellMainPage extends Component {
 
           <div className="gr">
             <GraphMaker product={this.state.product} />
-
           </div>
-
-          
-
         </div>
-        
+
         <input
           placeholder="Enter number of stocks"
           type={"number"}
