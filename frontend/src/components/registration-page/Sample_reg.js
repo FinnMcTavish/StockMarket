@@ -37,7 +37,7 @@ function Sample_reg() {
       (today.getMonth() + 1) +
       "-" +
       today.getDate();
-    const coins = 0,
+    const coins = 5000,
       profit = 0,
       IBM = { stocks: 0, times: 0, cp: 0 },
       TSCO = { stocks: 0, times: 0, cp: 0 },
