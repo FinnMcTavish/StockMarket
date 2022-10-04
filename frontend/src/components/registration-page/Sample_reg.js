@@ -110,6 +110,7 @@ function Sample_reg() {
       userCreator();
       dataCreator();
       alert(`account created success for ${username}`);
+      window.location.href = "/mainPage";
       navigate("/mainPage");
     });
   };
@@ -125,6 +126,7 @@ function Sample_reg() {
             alert("Welcome " + response.data[i]["username"] + " !");
             sessionStorage.setItem("username", username1);
             sessionStorage.setItem("active", new Date().getTime());
+            window.location.href = "/mainPage";
             navigate("/mainPage");
             return "Login Success";
           } else {
