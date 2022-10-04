@@ -187,67 +187,85 @@ class BuySellMainPage extends Component {
     return (
       <div className="container Borders">
         <div className="fitter">
-          <GraphMaker product={this.state.product} />
-          <img src={pic} alt="John Doe" className="profile-pic"></img>
-          <ul className="slider">
-            <li>Points : {this.state.userData["coins"]}</li>
-          </ul>
-        </div>
-        <div className="drop">
-          <nav>
-            <label for="touch">
-              <span>Companies</span>
-            </label>
-            <input type="checkbox" id="touch" />
+          <div className="doe-points">
+            <div>
+              <img src={pic} alt="John Doe" className="profile-pic"></img>
+              <ul className="slider">
+                <li>Points : {this.state.userData["coins"]}</li>
+              </ul>
 
-            <ul className="slide">
-              <li>
-                <a
-                  onClick={() => {
-                    this.updateData("IBM");
-                    // this.setState({ product: "IBM" });
-                  }}
-                  href="#"
-                >
-                  IBM
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => {
-                    this.updateData("TSCO.LON");
-                    // this.setState({ product: "TSCO.LON" });
-                  }}
-                  href="#"
-                >
-                  TSCO.LON
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => {
-                    this.updateData("SHOP.TRT");
-                    // this.setState({ product: "SHOP.TRT" });
-                  }}
-                  href="#"
-                >
-                  SHOP.TRT
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => {
-                    this.updateData("DAI.DEX");
-                    // this.setState({ product: "DAI.DEX" });
-                  }}
-                  href="#"
-                >
-                  DAI.DEX
-                </a>
-              </li>
-            </ul>
-          </nav>
+            </div>
+            
+          </div>
+          
+          
         </div>
+        <div className="graph-drop">
+          <div className="drop">
+            <nav>
+              <label for="touch">
+                <span>Companies</span>
+              </label>
+              <input type="checkbox" id="touch" />
+
+              <ul className="slide">
+                <li>
+                  <a
+                    onClick={() => {
+                      this.updateData("IBM");
+                      // this.setState({ product: "IBM" });
+                    }}
+                    href="#"
+                  >
+                    IBM
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={() => {
+                      this.updateData("TSCO.LON");
+                      // this.setState({ product: "TSCO.LON" });
+                    }}
+                    href="#"
+                  >
+                    TSCO.LON
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={() => {
+                      this.updateData("SHOP.TRT");
+                      // this.setState({ product: "SHOP.TRT" });
+                    }}
+                    href="#"
+                  >
+                    SHOP.TRT
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={() => {
+                      this.updateData("DAI.DEX");
+                      // this.setState({ product: "DAI.DEX" });
+                    }}
+                    href="#"
+                  >
+                    DAI.DEX
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div className="gr">
+            <GraphMaker product={this.state.product} />
+
+          </div>
+
+          
+
+        </div>
+        
         <input
           placeholder="Enter number of stocks"
           type={"number"}

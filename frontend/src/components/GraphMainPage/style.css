@@ -1,6 +1,6 @@
 .container {
     flex-direction: column;
-    background-color: rgb(59, 57, 71);
+    background-color: rgb(60, 71, 57);
     align-self: center;
 }
 
@@ -43,21 +43,8 @@ button {
 
 .colcontainer {
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 50px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .profile-pic {
@@ -69,7 +56,15 @@ button {
   }
 
 
-
+.doe-points{
+  float: right;
+  margin-right: 30px;
+  margin: 20px;
+  /* position: relative;
+  right: 100px; */
+  /* vertical-align:middle;  */
+  /* text-align:right; */
+}
 
 .drop {font-family : "Open Sans", sans-serif;}
 
@@ -101,7 +96,7 @@ span::after {
 
 .slide {
   clear:both;
-  background-color: aliceblue;
+  background-color:aliceblue;
   width:100%;
   height:0px;
   overflow: hidden;
@@ -126,6 +121,21 @@ span::after {
     cursor : pointer;
     display: block;
     color: #7928ca;
-    width:30%;
+    width:150px;
     text-align: center;
+  }
+
+  .fitter{
+    width: 800px;
+    overflow: hidden;
+  }
+
+  .graph-drop{
+    display: flex;
+    overflow: hidden;
+  }
+
+  .gr{
+    width: 500px;
+    height: 300px;
   }

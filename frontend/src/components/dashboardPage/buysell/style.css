@@ -28,8 +28,9 @@
 }
 
 .innerBox {
-    width: inherit;
+    /* width: inherit; */
     display: flex;
+    width: 800px;
     flex-direction: row;
     justify-content: center;
     margin: 50 auto;
@@ -63,3 +64,4 @@ button {
     flex-direction: column;
     margin-top: 100px;
 }
+
