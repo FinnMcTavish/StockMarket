@@ -8,11 +8,10 @@ import GraphImage from "../../../assets/graph-image.png";
 class LoginGraph extends React.Component {
   render() {
     let h = window.screen.availHeight;
-    let w = window.screen.availWidth;
     const mystyle = {
-      maxHeight: h,
-      maxWidth: w,
+      height: h,
     };
+    // let w = window.screen.availWidth;
     // const history = useHistory();
     return (
       <div style={mystyle}>

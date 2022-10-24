@@ -104,32 +104,50 @@ class LineChart extends React.Component {
         ],
       },
     };
-
+    let h = window.screen.availHeight;
+    const mystyle = {
+      height: h,
+      display: "flex",
+      justifyContent: "center",
+    };
+    const contStyle = {};
     return (
-      <div className="container" style={{ marginLeft: "8%" }}>
-        <Line
-          height={window.screen.availHeight - 100}
-          width={window.screen.availWidth - 100}
-          datasetIdKey="id"
-          options={options}
-          data={{
-            labels: this.state.xValue,
-            datasets: [
-              {
-                id: 1,
-                label: this.state.selected,
-                data: this.state.yValue,
-                fill: true,
-                backgroundColor: "#6ab7e733",
-                borderColor: "#288fca",
-
-                pointStyle: "star",
-                pointBorderColor: "#06659f",
-                pointBackgroundColor: "white",
-              },
-            ],
+      <div style={mystyle}>
+        <div
+          className="container"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            backgroundColor: "inherit",
+            height: "800px",
+            width: "1400px",
           }}
-        />
+        >
+          <Line
+            height={window.screen.availHeight - 40}
+            width={window.screen.availWidth - 20}
+            datasetIdKey="id"
+            options={options}
+            data={{
+              labels: this.state.xValue,
+
+              datasets: [
+                {
+                  id: 1,
+                  label: this.state.selected,
+                  data: this.state.yValue,
+                  fill: true,
+                  backgroundColor: "#6ab7e733",
+                  borderColor: "#288fca",
+
+                  pointStyle: "star",
+                  pointBorderColor: "#06659f",
+                  pointBackgroundColor: "white",
+                },
+              ],
+            }}
+          />
+        </div>
       </div>
     );
   }

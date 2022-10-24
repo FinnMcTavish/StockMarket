@@ -190,14 +190,11 @@ class BuySellMainPage extends Component {
         <div className="fitter">
           <div className="doe-points">
             <div>
-              <img
-                onClick={(event) => (window.location.href = "/profile")}
-                src={pic}
-                alt="John Doe"
-                className="profile-pic"
-              ></img>
+              <img src={pic} alt="John Doe" className="profile-pic"></img>
               <ul className="slider">
-                <li>Points : {this.state.userData["coins"]}</li>
+                <li>
+                  Points : {parseFloat(this.state.userData["coins"]).toFixed(2)}
+                </li>
               </ul>
             </div>
           </div>
@@ -215,7 +212,6 @@ class BuySellMainPage extends Component {
                   <a
                     onClick={() => {
                       this.updateData("IBM");
-                      // this.setState({ product: "IBM" });
                     }}
                     href="#"
                   >
@@ -226,7 +222,6 @@ class BuySellMainPage extends Component {
                   <a
                     onClick={() => {
                       this.updateData("TSCO.LON");
-                      // this.setState({ product: "TSCO.LON" });
                     }}
                     href="#"
                   >
@@ -248,7 +243,6 @@ class BuySellMainPage extends Component {
                   <a
                     onClick={() => {
                       this.updateData("DAI.DEX");
-                      // this.setState({ product: "DAI.DEX" });
                     }}
                     href="#"
                   >
