@@ -1,12 +1,12 @@
-.square{
+.square {
     height: 150px;
     width: 150px;
-    background-color: #B9FFF8;
+    background-color: #b9fff8;
     margin: 10px;
     border-radius: 25px;
 }
 
-.square-container{
+.square-container {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
@@ -14,17 +14,16 @@
     padding-right: 40px;
 }
 
-.square-parent{
+.square-parent {
     margin-top: 50px;
 }
 
-.square h2{
+.square h2 {
     font-size: 40px;
-    position: relative;
     top: 40px;
 }
 
-a{
+a {
     text-decoration: none;
-    color: #D61C4E;
+    color: rgb(192, 65, 26);
 }

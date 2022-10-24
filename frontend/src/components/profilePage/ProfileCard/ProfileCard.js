@@ -36,29 +36,43 @@ function ProfileCard() {
             <div className="circle">
               <div className="parent">
                 <center>
-                  <h2>Profile Name</h2>
+                  <h2 className="user"> {profileData.username}</h2>
                   {/* <h2>{profileData.username}</h2> */}
                 </center>
                 <div className="points-container">
-                  <h3 className="points">POINTS</h3>
-                  <h3 className="points-num">{profileData.coins}</h3>
+                  <h3 className="points-num">
+                    {parseFloat(profileData.coins).toFixed(2)}
+                  </h3>
                   <img className="coin" src={point} alt="Coin" />
                 </div>
 
-                <h4 className="play-from">
-                  Started Playing from{" "}
-                  {/* <span className="date">16th August 2022</span> */}
-                  <span className="date">{profileData.start}</span>
+                <h4 className="play-from" style={{ color: "black" }}>
+                  Since {/* <span className="date">16th August 2022</span> */}
+                  <span style={{ padding: "15px 2px" }} className="date">
+                    {profileData.start}
+                  </span>
                 </h4>
               </div>
             </div>
 
             <div className="square-parent">
               <div className="square-container">
-                <Square title={"IBM : " + profileData["IBM"]["stocks"]} />
-                <Square title={"TSCO : " + profileData["TSCO"]["stocks"]} />
-                <Square title={"DAI : " + profileData["DAI"]["stocks"]} />
-                <Square title={"SHOP : " + profileData["SHOP"]["stocks"]} />
+                <Square
+                  stocks={profileData["IBM"]["stocks"]}
+                  title={"IBM   "}
+                />
+                <Square
+                  stocks={profileData["TSCO"]["stocks"]}
+                  title={"TSCO   "}
+                />
+                <Square
+                  stocks={profileData["DAI"]["stocks"]}
+                  title={"DAI   "}
+                />
+                <Square
+                  stocks={profileData["SHOP"]["stocks"]}
+                  title={"SHOP   "}
+                />
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import "./style.css";
+import "./Graphstyle.css";
 import pic from "../../assets/stonksManProfile.jpg";
 import React from "react";
 import Axios from "axios";
@@ -203,7 +203,7 @@ class BuySellMainPage extends Component {
           <div className="drop">
             <nav>
               <label for="touch">
-                <span>Companies</span>
+                <span className="comp">Companies</span>
               </label>
               <input type="checkbox" id="touch" />
 

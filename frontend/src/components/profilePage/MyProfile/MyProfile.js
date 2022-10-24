@@ -1,12 +1,11 @@
 import React from "react";
-import NavBar from "../NavBar/NavBar";
-import "./MyProfile.css";
+
 import ProfileCard from "../ProfileCard/ProfileCard";
 function MyProfile() {
   // alert(sessionStorage.getItem("username"));
   return (
-    <section className="prof">
-      <NavBar />
+    <section className="prof" style={{ backgroundColor: "#0a507c" }}>
+      {/* <NavBar /> */}
       <ProfileCard />
     </section>
   );
