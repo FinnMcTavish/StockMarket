@@ -88,12 +88,12 @@ class GraphMakerMainPage extends Component {
         ],
       },
     };
-    const mystyle = {
-      height: this.props.height,
-      width: this.props.width,
-    };
+    // const mystyle = {
+    //   height: this.props.height,
+    //   width: this.props.width,
+    // };
     return (
-      <div className="container" style={mystyle}>
+      <div className="container" style={{ backgroundColor: "transparent" }}>
         <Line
           datasetIdKey="id"
           options={options}

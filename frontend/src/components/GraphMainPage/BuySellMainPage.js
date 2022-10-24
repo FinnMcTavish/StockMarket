@@ -4,15 +4,7 @@ import React from "react";
 import Axios from "axios";
 import { Component } from "react";
 import GraphMaker from "./GraphMakerMainPage";
-// import {  } from "react-router-dom";
-//  symbols: [
-//   "IBM",
-//   "TSCO.LON",
-//   "SHOP.TRT",
-//   "GPV.TRV",
-//   "DAI.DEX",
-//   "RELIANCE.BSE",
-// ],
+import point from "../../assets/point.png";
 class BuySellMainPage extends Component {
   constructor(props) {
     super(props);
@@ -81,7 +73,7 @@ class BuySellMainPage extends Component {
 
   putData = async (data) => {
     const username = sessionStorage.getItem("username");
-    Axios.put(`http://localhost:3002/update/${username}`, data).then(
+    await Axios.put(`http://localhost:3002/update/${username}`, data).then(
       (response) => {
         console.log(response.data);
         // this.updateData()
@@ -186,21 +178,125 @@ class BuySellMainPage extends Component {
 
   render() {
     return (
-      <div className="container Borders">
-        <div className="fitter">
-          <div className="doe-points">
-            <div>
-              <img src={pic} alt="John Doe" className="profile-pic"></img>
-              <ul className="slider">
-                <li>
-                  Points : {parseFloat(this.state.userData["coins"]).toFixed(2)}
-                </li>
-              </ul>
-            </div>
+      <div style={{ marginTop: "55px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <h1 style={{ textAlign: "center" }}>{this.state.product}</h1>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              marginTop: "55px",
+              justifyContent: "center",
+            }}
+          >
+            <table
+              style={{
+                textAlign: "center",
+                borderCollapse: "separate",
+                border: "2px solid #108ccf",
+                width: "500px",
+              }}
+              cellPadding="7px"
+              cellSpacing={"5px"}
+            >
+              <tr>
+                <th>Cost</th>
+                <td>{this.state.todayPrice}</td>
+              </tr>
+              <tr>
+                <th>Purchases</th>
+                <td>
+                  {this.state.userData != {} &&
+                  this.state.userData[this.state.product.split(".")[0]] !=
+                    undefined
+                    ? this.state.userData[this.state.product.split(".")[0]][
+                        "times"
+                      ]
+                    : "loading..."}
+                  {/* {this.state.product} */}
+                </td>
+              </tr>
+              <tr>
+                <th>Stocks</th>
+                <td>
+                  {this.state.userData != {} &&
+                  this.state.userData[this.state.product.split(".")[0]] !=
+                    undefined
+                    ? this.state.userData[this.state.product.split(".")[0]][
+                        "stocks"
+                      ]
+                    : "loading..."}
+                </td>
+              </tr>
+              <tr>
+                <th>Profit</th>
+                <td>
+                  <div
+                    style={{
+                      alignItems: "center",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {" "}
+                    {parseFloat(this.state.userData["profit"]).toFixed(2)}
+                    <img
+                      className="coin"
+                      style={{
+                        marginLeft: "5px",
+                        height: "20px",
+                        width: "20px",
+                      }}
+                      src={point}
+                      alt="Coin"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>Coins</th>
+                <td>
+                  <div
+                    style={{
+                      alignItems: "center",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {" "}
+                    {parseFloat(this.state.userData.coins).toFixed(2)}
+                    <img
+                      className="coin"
+                      style={{
+                        height: "20px",
+                        width: "20px",
+                        marginLeft: "5px",
+                      }}
+                      src={point}
+                      alt="Coin"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
-        <div className="graph-drop">
-          <div className="drop">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+            marginTop: "75px",
+          }}
+        >
+          <div style={{ height: "334px" }}>
             <nav>
               <label for="touch">
                 <span className="comp">Companies</span>
@@ -252,31 +348,65 @@ class BuySellMainPage extends Component {
               </ul>
             </nav>
           </div>
-
-          <div className="gr">
+          <div>
+            {" "}
             <GraphMaker product={this.state.product} />
           </div>
         </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
 
-        <input
-          placeholder="Enter number of stocks"
-          type={"number"}
-          required
-          min={0}
-          ref={(input) => {
-            this.nameInput = input;
-          }}
-          onChange={(e) => {
-            this.setState({ number: e.target.value });
-          }}
-        />
-        <div className="colcontainer">
-          <button onClick={this.buyItem} className="green">
-            Buy
-          </button>
-          <button onClick={this.sellItem} className="red">
-            Sell
-          </button>
+              justifyContent: "center",
+            }}
+          >
+            <input
+              placeholder="Enter number of stocks"
+              type={"number"}
+              required
+              min={0}
+              style={{ width: "540px", padding: "15px" }}
+              ref={(input) => {
+                this.nameInput = input;
+              }}
+              onChange={(e) => {
+                this.setState({ number: e.target.value });
+              }}
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              marginTop: "55px",
+            }}
+          >
+            <div>
+              <button
+                style={{ margin: "50px" }}
+                onClick={this.buyItem}
+                className="green"
+              >
+                Buy
+              </button>
+              <button
+                style={{ margin: "50px" }}
+                onClick={this.sellItem}
+                className="red"
+              >
+                Sell
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );

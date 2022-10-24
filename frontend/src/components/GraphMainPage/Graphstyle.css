@@ -4,6 +4,11 @@
     align-self: center;
 }
 
+th,
+td {
+    border: 1px solid rgb(56, 122, 180);
+}
+
 .Borders {
     border-style: solid;
     border-radius: 10px;
@@ -113,7 +118,7 @@ nav {
 }
 
 #touch:checked+.slide {
-    height: 300px;
+    height: 334px;
 }
 
 .slider {

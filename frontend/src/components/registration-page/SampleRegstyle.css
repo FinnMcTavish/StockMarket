@@ -7,8 +7,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-body {
-    min-height: 100vh;
+.body {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,7 +17,7 @@ body {
 
 .container {
     position: relative;
-    max-width: 850px;
+    max-width: 750px;
     width: 100%;
     background: #fff;
     padding: 40px 30px;

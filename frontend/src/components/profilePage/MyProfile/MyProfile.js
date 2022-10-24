@@ -4,10 +4,19 @@ import ProfileCard from "../ProfileCard/ProfileCard";
 function MyProfile() {
   // alert(sessionStorage.getItem("username"));
   return (
-    <section className="prof" style={{ backgroundColor: "#0a507c" }}>
-      {/* <NavBar /> */}
-      <ProfileCard />
-    </section>
+    <center>
+      <section
+        className="prof"
+        style={{
+          backgroundColor: "#0a507c",
+          width: "fit-content",
+          marginTop: "50px",
+        }}
+      >
+        {/* <NavBar /> */}
+        <ProfileCard />
+      </section>
+    </center>
   );
 }
 
