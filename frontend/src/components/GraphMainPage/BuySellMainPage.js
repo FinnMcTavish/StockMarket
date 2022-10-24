@@ -5,6 +5,8 @@ import Axios from "axios";
 import { Component } from "react";
 import GraphMaker from "./GraphMakerMainPage";
 import point from "../../assets/point.png";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 class BuySellMainPage extends Component {
   constructor(props) {
     super(props);
@@ -83,21 +85,52 @@ class BuySellMainPage extends Component {
 
   buyItem = async () => {
     if (this.state.number <= 0) {
-      alert("Please specify the proper stock value");
+      // alert("Please specify the proper stock value");
+      // console.log("error");
+      toast.warn("Please specify the proper stock value", {
+        position: "bottom-right",
+        autoClose: 5002,
+        hideProgressBar: false,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
+
       this.nameInput.focus();
       return;
     } else if (this.state.number == undefined || this.state.number == "") {
-      alert("Please specify the number of tasks");
+      // alert("Please specify the number of tasks");
+      toast.warn("Please specify the number of stocks", {
+        position: "bottom-right",
+        autoClose: 5002,
+        hideProgressBar: false,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
       this.nameInput.focus();
       return;
     }
     if (this.state.userData.coins < this.state.number * this.state.todayPrice) {
-      alert(
-        `Sorry you don't have enough money to buy ${this.state.number} ${
-          this.state.product
-        } which costs ${
-          this.state.number * this.state.todayPrice
-        } coins. Number of coins you have: ${this.state.userData.coins} `
+      // alert(
+      //   `You need more ${
+      //     this.state.number * this.state.todayPrice - this.state.userData.coins
+      //   } to buy this stocks`
+      // );
+      toast.error(
+        `You need more ${
+          this.state.number * this.state.todayPrice - this.state.userData.coins
+        } to buy this much ${this.state.product} stocks`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        }
       );
       return;
     } else {
@@ -113,7 +146,17 @@ class BuySellMainPage extends Component {
       cp = (cp * stocks + buyPrice) / (stocks + this.state.number);
       times += 1;
       stocks += parseFloat(this.state.number);
-      alert("Stocks bought successfully!");
+      // alert("Stocks bought successfully!");
+      toast.success("Stocks bought successfully!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       console.log(
         `${this.state.number} ${this.state.product} stocks bought for ${buyPrice}. Coins have ${coins}. Avg = ${cp}, times= ${times}. Number of ${this.state.product} stocks= ${stocks}`
       );
@@ -131,19 +174,50 @@ class BuySellMainPage extends Component {
   };
   sellItem = async () => {
     if (this.state.number <= 0) {
-      alert("Please specify the proper stock value");
+      // alert("Please specify the proper stock value");
+      toast.warn("Please specify the proper stock value", {
+        position: "bottom-right",
+        autoClose: 5002,
+        hideProgressBar: false,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
       this.nameInput.focus();
       return;
     } else if (this.state.number == undefined || this.state.number == "") {
-      alert("Please specify the number of tasks");
+      // alert("Please specify the number of tasks");
+      toast.warn("Please specify the number of stocks", {
+        position: "bottom-right",
+        autoClose: 5002,
+        hideProgressBar: false,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
       this.nameInput.focus();
       return;
     }
     let stocks =
       this.state.userData[this.state.product.split(".")[0]]["stocks"];
     if (this.state.number > stocks) {
-      alert(
-        `You don't have ${this.state.number} ${this.state.product} stocks. You only have ${stocks}`
+      // alert(
+      //   `You don't have ${this.state.number} ${this.state.product} stocks. You only have ${stocks}`
+      // );
+      toast.error(
+        `You need more ${this.state.number - stocks} ${
+          this.state.product
+        } stocks`,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        }
       );
       this.nameInput.focus();
       return;
@@ -160,11 +234,21 @@ class BuySellMainPage extends Component {
       // cp = (cp * stocks - sellPrice) / (stocks - this.state.number);
       // times += 1;
       stocks -= this.state.number;
-      alert("Stocks sold successfully!");
+      // alert("Stocks sold successfully!");
+      toast.success(`+${sellPrice} 🪙`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       console.log(
         `${this.state.number} ${this.state.product} stocks sold for ${sellPrice}. Coins have ${coins}. Avg = ${cp}, times= ${times}. Number of ${this.state.product} stocks= ${stocks}`
       );
-      let userData = this.state.userData;
+      let userData = new Object(this.state.userData);
       userData.coins = coins;
       userData[this.state.product.split(".")[0]].stocks = stocks;
       //  userData[this.state.product].times = times;
@@ -178,237 +262,252 @@ class BuySellMainPage extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: "55px" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <h1 style={{ textAlign: "center" }}>{this.state.product}</h1>
+      <>
+        <div style={{ marginTop: "55px" }}>
           <div
             style={{
-              width: "100%",
               display: "flex",
-              marginTop: "55px",
+              flexDirection: "column",
               justifyContent: "center",
             }}
           >
-            <table
+            <h1 style={{ textAlign: "center" }}>{this.state.product}</h1>
+            <div
               style={{
-                textAlign: "center",
-                borderCollapse: "separate",
-                border: "2px solid #108ccf",
-                width: "500px",
+                width: "100%",
+                display: "flex",
+                marginTop: "55px",
+                justifyContent: "center",
               }}
-              cellPadding="7px"
-              cellSpacing={"5px"}
             >
-              <tr>
-                <th>Cost</th>
-                <td>{this.state.todayPrice}</td>
-              </tr>
-              <tr>
-                <th>Purchases</th>
-                <td>
-                  {this.state.userData != {} &&
-                  this.state.userData[this.state.product.split(".")[0]] !=
-                    undefined
-                    ? this.state.userData[this.state.product.split(".")[0]][
-                        "times"
-                      ]
-                    : "loading..."}
-                  {/* {this.state.product} */}
-                </td>
-              </tr>
-              <tr>
-                <th>Stocks</th>
-                <td>
-                  {this.state.userData != {} &&
-                  this.state.userData[this.state.product.split(".")[0]] !=
-                    undefined
-                    ? this.state.userData[this.state.product.split(".")[0]][
-                        "stocks"
-                      ]
-                    : "loading..."}
-                </td>
-              </tr>
-              <tr>
-                <th>Profit</th>
-                <td>
-                  <div
-                    style={{
-                      alignItems: "center",
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {" "}
-                    {parseFloat(this.state.userData["profit"]).toFixed(2)}
-                    <img
-                      className="coin"
+              <table
+                style={{
+                  textAlign: "center",
+                  borderCollapse: "separate",
+                  border: "2px solid #108ccf",
+                  width: "500px",
+                }}
+                cellPadding="7px"
+                cellSpacing={"5px"}
+              >
+                <tr>
+                  <th>Coins</th>
+                  <td>
+                    <div
                       style={{
-                        marginLeft: "5px",
-                        height: "20px",
-                        width: "20px",
+                        alignItems: "center",
+                        display: "flex",
+                        justifyContent: "center",
                       }}
-                      src={point}
-                      alt="Coin"
-                    />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th>Coins</th>
-                <td>
-                  <div
-                    style={{
-                      alignItems: "center",
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {" "}
-                    {parseFloat(this.state.userData.coins).toFixed(2)}
-                    <img
-                      className="coin"
+                    >
+                      {" "}
+                      {parseFloat(this.state.userData.coins).toFixed(2)}
+                      <img
+                        className="coin"
+                        style={{
+                          height: "20px",
+                          width: "20px",
+                          marginLeft: "5px",
+                        }}
+                        src={point}
+                        alt="Coin"
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Purchases</th>
+                  <td>
+                    {this.state.userData != {} &&
+                    this.state.userData[this.state.product.split(".")[0]] !=
+                      undefined
+                      ? this.state.userData[this.state.product.split(".")[0]][
+                          "times"
+                        ]
+                      : "loading..."}
+                    {/* {this.state.product} */}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Stocks</th>
+                  <td>
+                    {this.state.userData != {} &&
+                    this.state.userData[this.state.product.split(".")[0]] !=
+                      undefined
+                      ? this.state.userData[this.state.product.split(".")[0]][
+                          "stocks"
+                        ]
+                      : "loading..."}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Profit</th>
+                  <td>
+                    <div
                       style={{
-                        height: "20px",
-                        width: "20px",
-                        marginLeft: "5px",
+                        alignItems: "center",
+                        display: "flex",
+                        justifyContent: "center",
                       }}
-                      src={point}
-                      alt="Coin"
-                    />
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-            marginTop: "75px",
-          }}
-        >
-          <div style={{ height: "334px" }}>
-            <nav>
-              <label for="touch">
-                <span className="comp">Companies</span>
-              </label>
-              <input type="checkbox" id="touch" />
-
-              <ul className="slide">
-                <li>
-                  <a
-                    onClick={() => {
-                      this.updateData("IBM");
-                    }}
-                    href="#"
-                  >
-                    IBM
-                  </a>
-                </li>
-                <li>
-                  <a
-                    onClick={() => {
-                      this.updateData("TSCO.LON");
-                    }}
-                    href="#"
-                  >
-                    TSCO.LON
-                  </a>
-                </li>
-                <li>
-                  <a
-                    onClick={() => {
-                      this.updateData("SHOP.TRT");
-                      // this.setState({ product: "SHOP.TRT" });
-                    }}
-                    href="#"
-                  >
-                    SHOP.TRT
-                  </a>
-                </li>
-                <li>
-                  <a
-                    onClick={() => {
-                      this.updateData("DAI.DEX");
-                    }}
-                    href="#"
-                  >
-                    DAI.DEX
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div>
-            {" "}
-            <GraphMaker product={this.state.product} />
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-
-              justifyContent: "center",
-            }}
-          >
-            <input
-              placeholder="Enter number of stocks"
-              type={"number"}
-              required
-              min={0}
-              style={{ width: "540px", padding: "15px" }}
-              ref={(input) => {
-                this.nameInput = input;
-              }}
-              onChange={(e) => {
-                this.setState({ number: e.target.value });
-              }}
-            />
+                    >
+                      {" "}
+                      {parseFloat(this.state.userData["profit"]).toFixed(2)}
+                      <img
+                        className="coin"
+                        style={{
+                          marginLeft: "5px",
+                          height: "20px",
+                          width: "20px",
+                        }}
+                        src={point}
+                        alt="Coin"
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Cost</th>
+                  <td>{this.state.todayPrice}</td>
+                </tr>
+              </table>
+            </div>
           </div>
           <div
             style={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "center",
-              marginTop: "55px",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+              marginTop: "75px",
             }}
           >
+            <div style={{ height: "334px" }}>
+              <nav>
+                <label for="touch">
+                  <span className="comp">Companies</span>
+                </label>
+                <input type="checkbox" id="touch" />
+
+                <ul className="slide">
+                  <li>
+                    <a
+                      onClick={() => {
+                        this.updateData("IBM");
+                      }}
+                      href="#"
+                    >
+                      IBM
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() => {
+                        this.updateData("TSCO.LON");
+                      }}
+                      href="#"
+                    >
+                      TSCO.LON
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() => {
+                        this.updateData("SHOP.TRT");
+                        // this.setState({ product: "SHOP.TRT" });
+                      }}
+                      href="#"
+                    >
+                      SHOP.TRT
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() => {
+                        this.updateData("DAI.DEX");
+                      }}
+                      href="#"
+                    >
+                      DAI.DEX
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
             <div>
-              <button
-                style={{ margin: "50px" }}
-                onClick={this.buyItem}
-                className="green"
-              >
-                Buy
-              </button>
-              <button
-                style={{ margin: "50px" }}
-                onClick={this.sellItem}
-                className="red"
-              >
-                Sell
-              </button>
+              {" "}
+              <GraphMaker product={this.state.product} />
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+
+                justifyContent: "center",
+              }}
+            >
+              <input
+                placeholder="Enter number of stocks"
+                type={"number"}
+                required
+                min={0}
+                style={{ width: "540px", padding: "15px" }}
+                ref={(input) => {
+                  this.nameInput = input;
+                }}
+                onChange={(e) => {
+                  this.setState({ number: e.target.value });
+                }}
+              />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                marginTop: "55px",
+              }}
+            >
+              <div>
+                <button
+                  style={{ margin: "50px" }}
+                  onClick={this.buyItem}
+                  className="green"
+                >
+                  Buy
+                </button>
+                <button
+                  style={{ margin: "50px" }}
+                  onClick={this.sellItem}
+                  className="red"
+                >
+                  Sell
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5002}
+          limit={3}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover={false}
+          theme="colored"
+        />
+      </>
     );
   }
 }
