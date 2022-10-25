@@ -6,6 +6,7 @@ import Axios from "axios";
 import "./SampleRegstyle.css";
 import Pic1 from "./../../assets/stonksManProfile.jpg";
 import Pic2 from "./../../assets/stonksManProfile.jpg";
+import { toast, ToastContainer } from "react-toastify";
 
 function Sample_reg() {
   const [listOfUsers, setListOfUsers] = useState([]);
@@ -97,8 +98,20 @@ function Sample_reg() {
     Axios.get("http://localhost:3002/getUsers").then((response) => {
       for (var i = 0; i < response.data.length; i++) {
         if (response.data[i]["username"] === username) {
-          alert("Username " + response.data[i]["username"] + " already exist!");
-
+          // alert("Username " + response.data[i]["username"] + " already exist!");
+          toast.warn(
+            "Username " + response.data[i]["username"] + " already exist!",
+            {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            }
+          );
           console.log("User already exist!");
           return "already exist";
         }
@@ -123,6 +136,16 @@ function Sample_reg() {
       for (var i = 0; i < response.data.length; i++) {
         if (response.data[i]["username"] === username1) {
           if (response.data[i]["password"] === password1) {
+            toast.success("Login success !", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
             alert("Welcome " + response.data[i]["username"] + " !");
             sessionStorage.setItem("username", username1);
             sessionStorage.setItem("active", new Date().getTime());
@@ -130,12 +153,31 @@ function Sample_reg() {
             navigate("/mainPage");
             return "Login Success";
           } else {
-            alert("Wrong Password");
+            toast.error("Wrong Password!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
             return "Wrong password";
           }
         }
       }
-      alert("Invalid username");
+
+      toast.error("Invalid username!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     });
     event.preventDefault();
   };
@@ -239,6 +281,19 @@ function Sample_reg() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5002}
+        limit={3}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover={false}
+        theme="colored"
+      />
     </div>
   );
 }
