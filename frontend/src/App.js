@@ -41,7 +41,7 @@ const App = () => {
 
         <Route
           path="/profile"
-          element={!username ? <Navigate to="/login" /> : <Profile />}
+          element={!username ? <Navigate to="/registration" /> : <Profile />}
         />
       </Routes>
     </BrowserRouter>
