@@ -12,12 +12,15 @@ function Sample_reg() {
   const [listOfUsers, setListOfUsers] = useState([]);
   const [listOfData, setListOfData] = useState([]);
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [ban, setBan] = useState(false);
   const [username, setUsername] = useState("");
 
   useEffect(() => {
     Axios.get("http://localhost:3002/getUsers").then((response) => {
       setListOfUsers(response.data);
     });
+
     Axios.get("http://localhost:3002/getData").then((response) => {
       setListOfData(response.data);
     });
@@ -82,12 +85,16 @@ function Sample_reg() {
     Axios.post("http://localhost:3002/createUser", {
       username,
       password,
+      email,
+      ban,
     }).then((response) => {
       setListOfUsers([
         ...listOfUsers,
         {
           username,
           password,
+          email,
+          ban,
         },
       ]);
     });
@@ -136,22 +143,36 @@ function Sample_reg() {
       for (var i = 0; i < response.data.length; i++) {
         if (response.data[i]["username"] === username1) {
           if (response.data[i]["password"] === password1) {
-            toast.success("Login success !", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "colored",
-            });
-            alert("Welcome " + response.data[i]["username"] + " !");
-            sessionStorage.setItem("username", username1);
-            sessionStorage.setItem("active", new Date().getTime());
-            window.location.href = "/mainPage";
-            navigate("/mainPage");
-            return "Login Success";
+            if (response.data[i]["ban"] == false) {
+              toast.success("Login success !", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
+              alert("Welcome " + response.data[i]["username"] + " !");
+              sessionStorage.setItem("username", username1);
+              sessionStorage.setItem("active", new Date().getTime());
+              window.location.href = "/mainPage";
+              navigate("/mainPage");
+              return "Login Success";
+            } else {
+              toast.error("Sorry you have been banned!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
+              return "Banned!";
+            }
           } else {
             toast.error("Wrong Password!", {
               position: "top-right",
@@ -255,6 +276,9 @@ function Sample_reg() {
                     <input
                       type="text"
                       placeholder="Enter your email"
+                      onChange={(event) => {
+                        setEmail(event.target.value);
+                      }}
                       required
                     />
                   </div>
