@@ -42,6 +42,10 @@ class BuySellMainPage extends Component {
     });
   };
 
+  convertToTwoDigit = (x) => {
+    return parseFloat(x).toFixed(2);
+  };
+
   setUserProductData = async (product) => {
     const username = sessionStorage.getItem("username");
 
@@ -144,6 +148,7 @@ class BuySellMainPage extends Component {
       let buyPrice = this.state.number * this.state.todayPrice;
       const coins = this.state.userData.coins - buyPrice;
       cp = (cp * stocks + buyPrice) / (stocks + this.state.number);
+
       times += 1;
       stocks += parseFloat(this.state.number);
       // alert("Stocks bought successfully!");
@@ -165,7 +170,9 @@ class BuySellMainPage extends Component {
       userData.coins = coins;
       userData[this.state.product.split(".")[0]].stocks = stocks;
       userData[this.state.product.split(".")[0]].times = times;
-      userData[this.state.product.split(".")[0]].cp = cp;
+      userData[this.state.product.split(".")[0]].cp =
+        this.convertToTwoDigit(cp);
+      userData["total"] = userData["total"] + 1;
       this.setState({ userData: userData });
       console.log(userData);
       this.putData(userData);

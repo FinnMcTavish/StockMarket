@@ -4,27 +4,29 @@ import { Component } from "react";
 
 class admin extends Component {
   state = {
-    purchases: [],
     total_purchases: 0,
     products: [],
     userData: {},
-    ban: [],
-    email: [],
+    profileData: {},
   };
 
   componentDidMount() {
     this.getUserData();
-    this.getBan();
+    this.getDetails();
   }
-  getBan = () => {
+  getDetails = () => {
     axios
       .get("http://localhost:3002/getUsers")
       .then((response) => {
         const data = response.data;
+        const d = {};
         data.map((value, index) => {
-          this.setState({ ban: [...this.state.ban, value.ban] });
-          this.setState({ email: [...this.state.email, value.email] });
+          d[value.username] = value;
+          //   this.setState({ ban: [...this.state.ban, value.ban] });
+          //   this.setState({ email: [...this.state.email, value.email] });
         });
+        console.log(d);
+        this.setState({ profileData: d });
       })
       .catch(() => {
         alert("Error in data retrival!!!!");
@@ -36,26 +38,15 @@ class admin extends Component {
       .get("http://localhost:3002/getData")
       .then((response) => {
         const data = response.data;
-        // console.log(data);
-        if (data.length) {
-          data.map((product, index) => {
-            const x =
-              product["IBM"]["times"] +
-              product["TSCO"]["times"] +
-              product["DAI"]["times"] +
-              product["SHOP"]["times"] +
-              product["GPV"]["times"] +
-              product["RELIANCE"]["times"];
-            console.log(x);
-            this.setState({
-              purchases: [...this.state.purchases, x],
-              total_purchases: this.state.total_purchases + x,
-            });
 
-            console.log(this.state.purchases);
-            console.log("total:", this.state.total_purchases);
+        data.map((val, ind) => {
+          this.setState({
+            total_purchases: this.state.total_purchases + val["total"],
           });
-        }
+        });
+
+        // console.log(data);
+
         this.setState({ products: data });
       })
 
@@ -65,7 +56,7 @@ class admin extends Component {
   };
 
   displayUserData = () => {
-    // if (!this.state.products.length) return console.log("ERRRRRROR");
+    if (!this.state.products.length) return console.log("ERRRRRROR");
 
     return this.state.products.map((product, index) => {
       return (
@@ -83,16 +74,32 @@ class admin extends Component {
         >
           <div>
             <h3>UserName: {product["username"]} </h3>
-            <h3>Email: {this.state.email[index]} </h3>
+            <h3>
+              Email: {this.state.profileData[product["username"]]["email"]}{" "}
+            </h3>
             <h3>StartDate: {product["start"]}</h3>
             <h3>Coins: {product["coins"]}</h3>
             <h3>Profit: {product["profit"]}</h3>
-            <h3>No of Purchases:{this.state.purchases[index]}</h3>
-            <h3>Ban:{this.state.ban[index] ? "True" : "False"}</h3>
+            <h3>No of Purchases:{product["total"]}</h3>
+            <h3>
+              Ban:
+              {this.state.profileData[product["username"]]["ban"]
+                ? "True"
+                : "False"}
+            </h3>
           </div>
 
           <div>
-            <table>
+            <table
+              style={{
+                textAlign: "center",
+                borderCollapse: "separate",
+                border: "2px solid #108ccf",
+                width: "500px",
+              }}
+              cellPadding="7px"
+              cellSpacing={"5px"}
+            >
               <tr>
                 <th>Companies</th>
                 <th>Stocks</th>

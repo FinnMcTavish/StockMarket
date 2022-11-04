@@ -55,8 +55,8 @@ app.post("/createData", async (req, res) => {
 
 app.put("/update/:username", async (req, res) => {
   let username = req.params.username;
-  let profit = req.body.profit;
-  let coins = req.body.coins;
+  let profit = parseFloat(req.body.profit).toFixed(2);
+  let coins = parseFloat(req.body.coins).toFixed(2);
   let IBM = req.body.IBM;
   let TSCO = req.body.TSCO;
   let DAI = req.body.DAI;
@@ -64,6 +64,7 @@ app.put("/update/:username", async (req, res) => {
   let GPV = req.body.GPV;
   let RELIANCE = req.body.RELIANCE;
   let start = req.body.start;
+  let total = req.body.total;
   DataModel.findOneAndUpdate(
     { username: username },
     {
@@ -77,6 +78,7 @@ app.put("/update/:username", async (req, res) => {
         GPV: GPV,
         RELIANCE: RELIANCE,
         start: start,
+        total: total,
       },
     },
     { new: true },
