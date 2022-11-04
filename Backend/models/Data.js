@@ -101,6 +101,10 @@ const DataSchema = mongoose.Schema({
     type: Object,
     required: true,
   },
+  total: {
+    type: Number,
+    required: true,
+  },
 });
 
 const DataModel = mongoose.model("Data", DataSchema);

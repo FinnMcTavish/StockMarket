@@ -49,6 +49,7 @@ function Sample_reg() {
       SHOP = { stocks: 0, times: 0, cp: 0 },
       GPV = { stocks: 0, times: 0, cp: 0 },
       RELIANCE = { stocks: 0, times: 0, cp: 0 },
+      total=0,
       start = date;
 
     Axios.post("http://localhost:3002/createData", {
@@ -62,6 +63,7 @@ function Sample_reg() {
       GPV,
       RELIANCE,
       start,
+      total
     }).then((response) => {
       setListOfData([
         ...listOfData,
@@ -76,6 +78,7 @@ function Sample_reg() {
           GPV,
           RELIANCE,
           start,
+          total
         },
       ]);
     });
