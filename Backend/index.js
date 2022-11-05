@@ -63,6 +63,34 @@ app.post("/createData", async (req, res) => {
   res.json(data);
 });
 
+app.put("/ban/:username", async (req, res) => {
+  const username = req.params.username;
+
+  const ban = req.body.ban;
+
+  UserModel.findOneAndUpdate(
+    { username: username },
+    {
+      $set: {
+        ban: ban,
+      },
+    },
+    { new: true },
+    (err, data) => {
+      if (err) {
+        res.send(err);
+      } else {
+        if (data == null) {
+          res.send("Nothing found!");
+        } else {
+          res.send(data);
+          console.log(data);
+        }
+      }
+    }
+  );
+});
+
 app.put("/update/:username", async (req, res) => {
   let username = req.params.username;
   let profit = parseFloat(req.body.profit).toFixed(2);

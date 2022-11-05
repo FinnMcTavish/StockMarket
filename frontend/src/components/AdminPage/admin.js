@@ -58,6 +58,19 @@ class admin extends Component {
       });
   };
 
+  banSetter = async (username, status) => {
+    await axios
+      .put(`http://localhost:3002/ban/${username}`, { ban: status })
+      .then((res) => {
+        let data = this.state.profileData;
+        data[username]["ban"] = status;
+        this.setState({ profileData: data });
+        // this.state.profileData[product["username"]]["ban"];
+        console.log(res.data);
+      });
+    // console.log(username + "=>" + status);
+  };
+
   displayUserData = () => {
     if (!this.state.products.length) return console.log("ERRRRRROR");
 
@@ -90,6 +103,17 @@ class admin extends Component {
                 ? "True"
                 : "False"}
             </h3>
+            <input
+              type={"checkbox"}
+              name="ban"
+              onChange={(e) => {
+                this.banSetter(product["username"], e.target.checked);
+              }}
+              defaultChecked={
+                this.state.profileData[product["username"]]["ban"]
+              }
+            />
+            Ban
           </div>
 
           <div>
@@ -178,7 +202,7 @@ class admin extends Component {
               margin: "10px",
               color: "white",
               textAlign: "center",
-              borderRadius: "10px",
+
               border: "solid #7928ca",
               boxShadow: "0 0 10px #7928ca",
             }}
@@ -197,7 +221,7 @@ class admin extends Component {
               margin: "10px",
               color: "white",
               textAlign: "center",
-              borderRadius: "10px",
+
               border: "solid #7928ca",
               boxShadow: "0 0 10px #7928ca",
             }}
@@ -216,7 +240,7 @@ class admin extends Component {
               margin: "10px",
               color: "white",
               textAlign: "center",
-              borderRadius: "10px",
+
               border: "solid #7928ca",
               boxShadow: "0 0 10px #7928ca",
             }}
