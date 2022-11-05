@@ -11,7 +11,6 @@ import AdminP from "./pages/AdminPage";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Registration from "./pages/Registration";
 
-
 const App = () => {
   const [active, setActive] = useState(sessionStorage.getItem("active"));
 

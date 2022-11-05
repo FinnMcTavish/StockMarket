@@ -75,7 +75,7 @@ class admin extends Component {
     if (!this.state.products.length) return console.log("ERRRRRROR");
 
     return this.state.products.map((product, index) => {
-      return (
+      return product["username"] != "admin" ? (
         <div
           key={index}
           style={{
@@ -172,6 +172,8 @@ class admin extends Component {
             </table>
           </div>
         </div>
+      ) : (
+        ""
       );
     });
   };
