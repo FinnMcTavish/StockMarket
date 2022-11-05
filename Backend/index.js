@@ -25,6 +25,16 @@ app.get("/getData", (req, res) => {
   });
 });
 
+app.get("/getTotal", (req, res) => {
+  DataModel.aggregate([
+    { $match: {} },
+    { $group: { _id: null, total: { $sum: "$total" } } },
+  ]).then((result) => {
+    res.json(result);
+    // console.log(result[0].total);
+  });
+});
+
 app.get("/getUsers", (req, res) => {
   UserModel.find({}, (err, result) => {
     if (err) {

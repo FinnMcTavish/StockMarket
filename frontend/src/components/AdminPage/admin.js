@@ -13,7 +13,16 @@ class admin extends Component {
   componentDidMount() {
     this.getUserData();
     this.getDetails();
+    this.getTotal();
   }
+
+  getTotal = () => {
+    axios.get("http://localhost:3002/getTotal").then((response) => {
+      const { data } = response;
+      this.setState({ total_purchases: data[0].total });
+    });
+  };
+
   getDetails = () => {
     axios
       .get("http://localhost:3002/getUsers")
@@ -38,12 +47,6 @@ class admin extends Component {
       .get("http://localhost:3002/getData")
       .then((response) => {
         const data = response.data;
-
-        data.map((val, ind) => {
-          this.setState({
-            total_purchases: this.state.total_purchases + val["total"],
-          });
-        });
 
         // console.log(data);
 
