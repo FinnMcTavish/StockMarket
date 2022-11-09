@@ -9,6 +9,12 @@ import Axios from "axios";
 function ProfileCard() {
   const [profileData, setProfileData] = useState({});
   const [loading, setLoading] = useState(true);
+
+  const logOuter = () => {
+    sessionStorage.clear();
+    window.location.href = "/";
+  };
+
   useEffect(() => {
     setLoading(true);
     const username = sessionStorage.getItem("username");
@@ -74,6 +80,35 @@ function ProfileCard() {
                   title={"SHOP   "}
                 />
               </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "30px",
+                justifyContent: "center",
+                marginTop: "30px",
+              }}
+            >
+              <button
+                onClick={() => {
+                  logOuter();
+                }}
+                className="logout"
+              >
+                Logout{" "}
+              </button>
+              {sessionStorage.getItem("username") === "admin" ? (
+                <button
+                  onClick={() => {
+                    window.location.href = "./admin";
+                  }}
+                  className="admin"
+                >
+                  Admin
+                </button>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </center>

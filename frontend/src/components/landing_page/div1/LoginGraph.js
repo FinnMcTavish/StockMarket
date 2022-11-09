@@ -22,7 +22,7 @@ class LoginGraph extends React.Component {
         { id: 6, label: "REL", title: "Reliance" },
         { id: 7, label: "STONKS", title: "STONKS" },
         { id: 8, label: "GAIN", title: "GAIN" },
-        { id: 9, label: "LOSS", title: "PROFIT" },
+        { id: 9, label: "No LOSS", title: "PROFIT" },
         { id: 10, label: "RISK", title: "RISK" },
       ],
       edges: [

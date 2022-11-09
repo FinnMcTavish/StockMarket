@@ -15,24 +15,36 @@ class HowtoPlay extends React.Component {
           <center>
             <h1 className="howtoplay">How to Play</h1>
           </center>
-          <div className="card">
+          <div
+            className="card"
+            onClick={() => {
+              console.log(sessionStorage.getItem("username"));
+              if (
+                sessionStorage.getItem("username") === null ||
+                sessionStorage.getItem("username") === ""
+              )
+                window.location.href = "./registration";
+              else {
+                window.location.href = "./profile";
+              }
+            }}
+          >
             <div className="card_title title-white">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos voluptates nesciunt officiis? Laborum nostrum nam
-                delectus ullam. Sapiente et quae, cupiditate illo nesciunt
-                numquam voluptatum possimus natus voluptatibus voluptate ab?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellat sit non qui ipsam earum beatae consequuntur voluptatum
-                id blanditiis dolorum, excepturi quas aut illo ullam deleniti,
-                tempora voluptatem deserunt nemo! Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Sequi minus inventore, officiis
-                corporis impedit aut quaerat autem doloribus culpa laboriosam,
-                quos quam ipsum nobis a perspiciatis quasi aspernatur
-                necessitatibus recusandae. Lorem, ipsum dolor sit amet
-                consectetur adipisicing elit. Provident et ut repellat, totam
-                distinctio laudantium nam tempora optio.
+                This is a Stock Market Game. This Game Replicates the actual
+                stock market. To start this game first you have to signup if you
+                are a new player else login back into your account. You will be
+                provided with some stonkcoins when you start the game. The
+                objective is to gain maximum profit using these stonkcoins by
+                buying and selling stocks from different companies. There are a
+                total of 6 different companies whose stock values goes up and
+                down depending on the market value. The best strategy to win is
+                to buy stocks when they are very cheap and sell them when their
+                value is very high.
               </p>
+              <h3 style={{ marginTop: "70px", textAlign: "center" }}>
+                 Good Luck
+              </h3>
             </div>
           </div>
         </div>

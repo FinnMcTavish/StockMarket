@@ -278,7 +278,14 @@ class BuySellMainPage extends Component {
               justifyContent: "center",
             }}
           >
-            <h1 style={{ textAlign: "center" }}>{this.state.product}</h1>
+            <h1
+              onClick={() => {
+                window.location.href = "./profile";
+              }}
+              style={{ textAlign: "center", cursor: "pointer" }}
+            >
+              {this.state.product}
+            </h1>
             <div
               style={{
                 width: "100%",
