@@ -1,13 +1,13 @@
 import { React, useState, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import { que } from "query-string";
 import Axios from "axios";
 import "./SampleRegstyle.css";
 import Pic1 from "./../../assets/stonksManProfile.jpg";
 import Pic2 from "./../../assets/stonksManProfile.jpg";
 import { toast, ToastContainer } from "react-toastify";
-
+const queryString = require("query-string");
 function Sample_reg() {
   const [listOfUsers, setListOfUsers] = useState([]);
   const [listOfData, setListOfData] = useState([]);
@@ -15,6 +15,7 @@ function Sample_reg() {
   const [email, setEmail] = useState("");
   const [ban, setBan] = useState(false);
   const [username, setUsername] = useState("");
+  const { search } = useLocation();
 
   useEffect(() => {
     Axios.get("http://localhost:3002/getUsers").then((response) => {
@@ -27,7 +28,10 @@ function Sample_reg() {
 
     {
       if (!sessionStorage.getItem("username")) {
-        alert("Session expired!");
+        // undefined
+        if (queryString.parse(search)["logout"] === "true") {
+          alert("Session expired!");
+        }
       }
     }
   }, []);
@@ -49,7 +53,7 @@ function Sample_reg() {
       SHOP = { stocks: 0, times: 0, cp: 0 },
       GPV = { stocks: 0, times: 0, cp: 0 },
       RELIANCE = { stocks: 0, times: 0, cp: 0 },
-      total=0,
+      total = 0,
       start = date;
 
     Axios.post("http://localhost:3002/createData", {
@@ -63,7 +67,7 @@ function Sample_reg() {
       GPV,
       RELIANCE,
       start,
-      total
+      total,
     }).then((response) => {
       setListOfData([
         ...listOfData,
@@ -78,7 +82,7 @@ function Sample_reg() {
           GPV,
           RELIANCE,
           start,
-          total
+          total,
         },
       ]);
     });

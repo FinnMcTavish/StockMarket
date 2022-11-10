@@ -30,21 +30,41 @@ const App = () => {
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route
           path="/dashboard"
-          element={!username ? <Navigate to="/registration" /> : <Dashboard />}
+          element={
+            !username ? (
+              <Navigate to="/registration?logout=true" />
+            ) : (
+              <Dashboard />
+            )
+          }
         />
         <Route path="/registration" element={<Registration />} />
         <Route
           path="/MainPage"
-          element={!username ? <Navigate to="/registration" /> : <MainPage />}
+          element={
+            !username ? (
+              <Navigate to="/registration?logout=true" />
+            ) : (
+              <MainPage />
+            )
+          }
         />
 
         <Route
           path="/profile"
-          element={!username ? <Navigate to="/registration" /> : <Profile />}
+          element={
+            !username ? (
+              <Navigate to="/registration?logout=true" />
+            ) : (
+              <Profile />
+            )
+          }
         />
         <Route
           path="/admin"
-          element={!username ? <Navigate to="/registration" /> : <AdminP />}
+          element={
+            !username ? <Navigate to="/registration?logout=true" /> : <AdminP />
+          }
         />
       </Routes>
     </BrowserRouter>
