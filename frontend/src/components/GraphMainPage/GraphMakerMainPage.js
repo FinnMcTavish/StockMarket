@@ -42,7 +42,11 @@ class GraphMakerMainPage extends Component {
       });
   };
 
-  componentDidMount = () => {
+  // componentDidMount = () => {
+  //   this.fetchData(this.props);
+  // };
+
+  componentDidUpdate = () => {
     this.fetchData(this.props);
   };
 
